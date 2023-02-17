@@ -15,7 +15,7 @@ The Latitude.sh API gives you programmatic access to all resources available on 
 pip install latitude
 ```
 <!-- End SDK Installation -->
-##Authentication
+## Authentication
 
 To create an API token, go to the Settings & Billing → API Keys page on the dashboard.
 
