@@ -4915,7 +4915,8 @@
                                           "description":"RAID mode for the server",
                                           "enum":[
                                              "raid-0",
-                                             "raid-1"
+                                             "raid-1",
+                                             null
                                           ],
                                           "nullable":true
                                        }
@@ -8580,7 +8581,8 @@
                         "type":"string",
                         "enum":[
                            "Normal",
-                           "95th percentile"
+                           "95th percentile",
+                           null
                         ],
                         "nullable":true
                      },
