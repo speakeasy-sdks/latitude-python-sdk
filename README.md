@@ -1,4 +1,12 @@
-# latitude
+# Latitude Python SDK
+
+Everything you need to deploy and manage single-tenant, high-performance bare metal servers.
+
+The Latitude.sh API gives you programmatic access to all resources available on the platform. With full control over the entire Latitude.sh platform, you can build integrations, custom dashboards, and manage your servers from your own clients.
+
+<div align="left">
+   <a href="https://github.com/speakeasy-sdks/posthog-go-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/latitude-python-sdk/speakeasy_sdk_generation.yml?style=for-the-badge" /></a>
+   <a href="https://docs.latitude.sh/reference/summary"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000&style=for-the-badge" /></a>
 
 <!-- Start SDK Installation -->
 ## SDK Installation
@@ -7,6 +15,11 @@
 pip install latitude
 ```
 <!-- End SDK Installation -->
+##Authentication
+
+To create an API token, go to the Settings & Billing → API Keys page on the dashboard.
+
+The key is shown to your only when it's created. If you lose it, you'll have to roll the key or create a new one.
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
