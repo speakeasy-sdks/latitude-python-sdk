@@ -1,0 +1,5 @@
+python:
+    version: 2.0.0
+    packagename: latitude
+    author: latitude
+sdkclassname: Latitude
