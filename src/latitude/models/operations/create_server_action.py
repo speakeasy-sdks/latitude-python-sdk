@@ -1,8 +1,9 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import error_object as shared_error_object
 from ..shared import security as shared_security
 from ..shared import server_action as shared_server_action
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from latitude import utils
 from typing import Optional
@@ -18,23 +19,23 @@ class CreateServerActionRequestBodyDataAttributesActionEnum(str, Enum):
     REBOOT = "reboot"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateServerActionRequestBodyDataAttributes:
-    action: Optional[CreateServerActionRequestBodyDataAttributesActionEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('action') }})
+    action: Optional[CreateServerActionRequestBodyDataAttributesActionEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('action'), 'exclude': lambda f: f is None }})
     
 class CreateServerActionRequestBodyDataTypeEnum(str, Enum):
     ACTIONS = "actions"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateServerActionRequestBodyData:
     type: CreateServerActionRequestBodyDataTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
-    attributes: Optional[CreateServerActionRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes') }})
+    attributes: Optional[CreateServerActionRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateServerActionRequestBody:
     data: CreateServerActionRequestBodyData = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})

@@ -1,7 +1,8 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import security as shared_security
 from ..shared import vpn_session_data_with_password as shared_vpn_session_data_with_password
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from latitude import utils
 from typing import Any, Optional
@@ -23,7 +24,7 @@ class GetVpnSessionsFilterSiteEnum(str, Enum):
 
 @dataclasses.dataclass
 class GetVpnSessionsQueryParams:
-    filter_site_: Optional[GetVpnSessionsFilterSiteEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[site]', 'style': 'form', 'explode': True }})
+    filter_site: Optional[GetVpnSessionsFilterSiteEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[site]', 'style': 'form', 'explode': True }})
     
 
 @dataclasses.dataclass
@@ -37,11 +38,11 @@ class GetVpnSessionsRequest:
     security: GetVpnSessionsSecurity = dataclasses.field()
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetVpnSessions200ApplicationJSON:
-    data: Optional[list[shared_vpn_session_data_with_password.VpnSessionDataWithPassword]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})
-    meta: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('meta') }})
+    data: Optional[list[shared_vpn_session_data_with_password.VpnSessionDataWithPassword]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data'), 'exclude': lambda f: f is None }})
+    meta: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('meta'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass

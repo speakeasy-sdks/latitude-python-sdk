@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import plans_bandwidth as shared_plans_bandwidth
 from ..shared import security as shared_security

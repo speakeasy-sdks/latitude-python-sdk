@@ -1,14 +1,15 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import error_object as shared_error_object
 from ..shared import security as shared_security
 from ..shared import virtual_network_assignment as shared_virtual_network_assignment
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from latitude import utils
 from typing import Optional
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class AssignServerVirtualNetworkRequestBodyDataAttributes:
     server_id: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('server_id') }})
@@ -18,17 +19,17 @@ class AssignServerVirtualNetworkRequestBodyDataTypeEnum(str, Enum):
     VIRTUAL_NETWORK_ASSIGNMENT = "virtual_network_assignment"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class AssignServerVirtualNetworkRequestBodyData:
     type: AssignServerVirtualNetworkRequestBodyDataTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
-    attributes: Optional[AssignServerVirtualNetworkRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes') }})
+    attributes: Optional[AssignServerVirtualNetworkRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class AssignServerVirtualNetworkRequestBody:
-    data: Optional[AssignServerVirtualNetworkRequestBodyData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})
+    data: Optional[AssignServerVirtualNetworkRequestBodyData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass

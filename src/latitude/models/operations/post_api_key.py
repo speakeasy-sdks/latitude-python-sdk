@@ -1,9 +1,10 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import api_key as shared_api_key
 from ..shared import create_api_key as shared_create_api_key
 from ..shared import error_object as shared_error_object
 from ..shared import security as shared_security
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from latitude import utils
 from typing import Optional
 
@@ -19,10 +20,10 @@ class PostAPIKeyRequest:
     request: Optional[shared_create_api_key.CreateAPIKey] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PostAPIKey201ApplicationJSON:
-    data: Optional[shared_api_key.APIKey] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})
+    data: Optional[shared_api_key.APIKey] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass

@@ -1,7 +1,8 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import role_data as shared_role_data
 from ..shared import security as shared_security
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from latitude import utils
 from typing import Optional
 
@@ -16,10 +17,10 @@ class GetRolesRequest:
     security: GetRolesSecurity = dataclasses.field()
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetRoles200ApplicationJSON:
-    data: Optional[list[shared_role_data.RoleData]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})
+    data: Optional[list[shared_role_data.RoleData]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass

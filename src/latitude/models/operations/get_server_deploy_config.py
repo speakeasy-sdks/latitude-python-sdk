@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import deploy_config as shared_deploy_config
 from ..shared import security as shared_security

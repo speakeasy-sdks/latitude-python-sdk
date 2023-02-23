@@ -1,8 +1,9 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import deploy_config as shared_deploy_config
 from ..shared import error_object as shared_error_object
 from ..shared import security as shared_security
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from latitude import utils
 from typing import Optional
@@ -35,24 +36,24 @@ class UpdateServerDeployConfigRequestBodyAttributesRaidEnum(str, Enum):
     NULL = "null"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateServerDeployConfigRequestBodyAttributes:
-    hostname: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('hostname') }})
-    operating_system: Optional[UpdateServerDeployConfigRequestBodyAttributesOperatingSystemEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('operating_system') }})
-    raid: Optional[UpdateServerDeployConfigRequestBodyAttributesRaidEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('raid') }})
-    ssh_keys: Optional[list[int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ssh_keys') }})
-    user_data: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('user_data') }})
+    hostname: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('hostname'), 'exclude': lambda f: f is None }})
+    operating_system: Optional[UpdateServerDeployConfigRequestBodyAttributesOperatingSystemEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('operating_system'), 'exclude': lambda f: f is None }})
+    raid: Optional[UpdateServerDeployConfigRequestBodyAttributesRaidEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('raid'), 'exclude': lambda f: f is None }})
+    ssh_keys: Optional[list[int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ssh_keys'), 'exclude': lambda f: f is None }})
+    user_data: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('user_data'), 'exclude': lambda f: f is None }})
     
 class UpdateServerDeployConfigRequestBodyTypeEnum(str, Enum):
     DEPLOY_CONFIG = "deploy_config"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateServerDeployConfigRequestBody:
     type: UpdateServerDeployConfigRequestBodyTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
-    attributes: Optional[UpdateServerDeployConfigRequestBodyAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes') }})
+    attributes: Optional[UpdateServerDeployConfigRequestBodyAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass

@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import security as shared_security
 from ..shared import virtual_network_assignments as shared_virtual_network_assignments
@@ -6,9 +7,9 @@ from typing import Optional
 
 @dataclasses.dataclass
 class GetVirtualNetworksAssignmentsQueryParams:
-    filter_server_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[server]', 'style': 'form', 'explode': True }})
-    filter_vid_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[vid]', 'style': 'form', 'explode': True }})
-    filter_virtual_network_id_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[virtual_network_id]', 'style': 'form', 'explode': True }})
+    filter_server: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[server]', 'style': 'form', 'explode': True }})
+    filter_vid: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[vid]', 'style': 'form', 'explode': True }})
+    filter_virtual_network_id: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[virtual_network_id]', 'style': 'form', 'explode': True }})
     include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
     
 

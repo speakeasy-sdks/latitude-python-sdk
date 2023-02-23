@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import projects as shared_projects
 from ..shared import security as shared_security
@@ -6,12 +7,12 @@ from typing import Optional
 
 @dataclasses.dataclass
 class GetProjectsQueryParams:
-    extra_fields_projects_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[projects]', 'style': 'form', 'explode': True }})
-    filter_billing_type_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[billing_type]', 'style': 'form', 'explode': True }})
-    filter_description_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[description]', 'style': 'form', 'explode': True }})
-    filter_environment_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[environment]', 'style': 'form', 'explode': True }})
-    filter_name_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[name]', 'style': 'form', 'explode': True }})
-    filter_slug_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[slug]', 'style': 'form', 'explode': True }})
+    extra_fields_projects: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[projects]', 'style': 'form', 'explode': True }})
+    filter_billing_type: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[billing_type]', 'style': 'form', 'explode': True }})
+    filter_description: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[description]', 'style': 'form', 'explode': True }})
+    filter_environment: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[environment]', 'style': 'form', 'explode': True }})
+    filter_name: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[name]', 'style': 'form', 'explode': True }})
+    filter_slug: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[slug]', 'style': 'form', 'explode': True }})
     include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
     
 
