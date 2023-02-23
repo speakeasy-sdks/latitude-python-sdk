@@ -24,6 +24,11 @@ src/latitude/virtual_network_assignments.py
 src/latitude/virtual_networks.py
 src/latitude/sdk.py
 setup.py
+src/latitude/__init__.py
+src/latitude/models/__init__.py
+src/latitude/utils/__init__.py
+src/latitude/utils/retries.py
+src/latitude/utils/utils.py
 src/latitude/models/operations/delete_api_key.py
 src/latitude/models/operations/get_api_keys.py
 src/latitude/models/operations/post_api_key.py
