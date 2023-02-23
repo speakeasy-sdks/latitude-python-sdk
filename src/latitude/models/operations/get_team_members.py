@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import security as shared_security
 from ..shared import team_members as shared_team_members

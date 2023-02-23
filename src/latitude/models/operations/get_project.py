@@ -1,7 +1,8 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import project as shared_project
 from ..shared import security as shared_security
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from latitude import utils
 from typing import Optional
 
@@ -13,7 +14,7 @@ class GetProjectPathParams:
 
 @dataclasses.dataclass
 class GetProjectQueryParams:
-    extra_fields_projects_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[projects]', 'style': 'form', 'explode': True }})
+    extra_fields_projects: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[projects]', 'style': 'form', 'explode': True }})
     
 
 @dataclasses.dataclass
@@ -28,10 +29,10 @@ class GetProjectRequest:
     security: GetProjectSecurity = dataclasses.field()
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetProject200ApplicationJSON:
-    data: Optional[shared_project.Project] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})
+    data: Optional[shared_project.Project] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass

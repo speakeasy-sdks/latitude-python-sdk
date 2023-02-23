@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import security as shared_security
 from ..shared import server as shared_server
@@ -11,7 +12,7 @@ class GetServerPathParams:
 
 @dataclasses.dataclass
 class GetServerQueryParams:
-    extra_fields_servers_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[servers]', 'style': 'form', 'explode': True }})
+    extra_fields_servers: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[servers]', 'style': 'form', 'explode': True }})
     
 
 @dataclasses.dataclass

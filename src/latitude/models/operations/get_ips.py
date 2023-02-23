@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import error_object as shared_error_object
 from ..shared import ip_addresses as shared_ip_addresses
@@ -16,13 +17,13 @@ class GetIpsFilterTypeEnum(str, Enum):
 
 @dataclasses.dataclass
 class GetIpsQueryParams:
-    extra_fields_ip_addresses_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[ip_addresses]', 'style': 'form', 'explode': True }})
-    filter_address_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[address]', 'style': 'form', 'explode': True }})
-    filter_family_: Optional[GetIpsFilterFamilyEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[family]', 'style': 'form', 'explode': True }})
-    filter_location_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[location]', 'style': 'form', 'explode': True }})
-    filter_project_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[project]', 'style': 'form', 'explode': True }})
-    filter_server_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[server]', 'style': 'form', 'explode': True }})
-    filter_type_: Optional[GetIpsFilterTypeEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[type]', 'style': 'form', 'explode': True }})
+    extra_fields_ip_addresses: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[ip_addresses]', 'style': 'form', 'explode': True }})
+    filter_address: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[address]', 'style': 'form', 'explode': True }})
+    filter_family: Optional[GetIpsFilterFamilyEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[family]', 'style': 'form', 'explode': True }})
+    filter_location: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[location]', 'style': 'form', 'explode': True }})
+    filter_project: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[project]', 'style': 'form', 'explode': True }})
+    filter_server: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[server]', 'style': 'form', 'explode': True }})
+    filter_type: Optional[GetIpsFilterTypeEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[type]', 'style': 'form', 'explode': True }})
     include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
     
 

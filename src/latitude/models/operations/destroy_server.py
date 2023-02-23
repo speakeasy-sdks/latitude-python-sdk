@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import error_object as shared_error_object
 from ..shared import security as shared_security

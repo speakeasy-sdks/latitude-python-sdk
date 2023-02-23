@@ -1,7 +1,8 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import security as shared_security
 from ..shared import ssh_key_data as shared_ssh_key_data
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from latitude import utils
 from typing import Optional
 
@@ -29,10 +30,10 @@ class GetProjectSSHKeyRequest:
     security: GetProjectSSHKeySecurity = dataclasses.field()
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetProjectSSHKey200ApplicationJSON:
-    data: Optional[shared_ssh_key_data.SSHKeyData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})
+    data: Optional[shared_ssh_key_data.SSHKeyData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass

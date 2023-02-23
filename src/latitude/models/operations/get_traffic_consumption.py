@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import security as shared_security
 from ..shared import traffic as shared_traffic
@@ -6,10 +7,10 @@ from typing import Optional
 
 @dataclasses.dataclass
 class GetTrafficConsumptionQueryParams:
-    filter_from_date_: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[from_date]', 'style': 'form', 'explode': True }})
-    filter_project_: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[project]', 'style': 'form', 'explode': True }})
-    filter_server_: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[server]', 'style': 'form', 'explode': True }})
-    filter_to_date_: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[to_date]', 'style': 'form', 'explode': True }})
+    filter_from_date: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[from_date]', 'style': 'form', 'explode': True }})
+    filter_project: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[project]', 'style': 'form', 'explode': True }})
+    filter_server: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[server]', 'style': 'form', 'explode': True }})
+    filter_to_date: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[to_date]', 'style': 'form', 'explode': True }})
     
 
 @dataclasses.dataclass

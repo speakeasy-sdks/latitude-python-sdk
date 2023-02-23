@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import security as shared_security
 from ..shared import user_data as shared_user_data
@@ -12,7 +13,7 @@ class GetProjectUserDataPathParams:
 
 @dataclasses.dataclass
 class GetProjectUserDataQueryParams:
-    extra_fields_user_data_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[user_data]', 'style': 'form', 'explode': True }})
+    extra_fields_user_data: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[user_data]', 'style': 'form', 'explode': True }})
     include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
     
 

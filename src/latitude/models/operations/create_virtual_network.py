@@ -1,32 +1,33 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import error_object as shared_error_object
 from ..shared import security as shared_security
 from ..shared import virtual_network as shared_virtual_network
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from latitude import utils
 from typing import Optional
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateVirtualNetworkRequestBodyDataAttributes:
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('description') }})
-    project: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('project') }})
-    site: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('site') }})
+    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('description'), 'exclude': lambda f: f is None }})
+    project: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('project'), 'exclude': lambda f: f is None }})
+    site: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('site'), 'exclude': lambda f: f is None }})
     
 class CreateVirtualNetworkRequestBodyDataTypeEnum(str, Enum):
     VIRTUAL_NETWORK = "virtual_network"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateVirtualNetworkRequestBodyData:
     type: CreateVirtualNetworkRequestBodyDataTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
-    attributes: Optional[CreateVirtualNetworkRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes') }})
+    attributes: Optional[CreateVirtualNetworkRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateVirtualNetworkRequestBody:
     data: CreateVirtualNetworkRequestBodyData = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})

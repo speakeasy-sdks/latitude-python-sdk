@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import error_object as shared_error_object
 from ..shared import security as shared_security
@@ -7,7 +8,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class GetTrafficQuotaQueryParams:
-    filter_project_: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[project]', 'style': 'form', 'explode': True }})
+    filter_project: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[project]', 'style': 'form', 'explode': True }})
     
 
 @dataclasses.dataclass

@@ -1,7 +1,8 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import security as shared_security
 from ..shared import virtual_network as shared_virtual_network
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from latitude import utils
 from typing import Optional
@@ -12,24 +13,24 @@ class UpdateVirtualNetworkPathParams:
     id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateVirtualNetworkRequestBodyDataAttributes:
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('description') }})
+    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('description'), 'exclude': lambda f: f is None }})
     
 class UpdateVirtualNetworkRequestBodyDataTypeEnum(str, Enum):
     VIRTUAL_NETWORK = "virtual_network"
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateVirtualNetworkRequestBodyData:
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('id') }})
     type: UpdateVirtualNetworkRequestBodyDataTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
-    attributes: Optional[UpdateVirtualNetworkRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes') }})
+    attributes: Optional[UpdateVirtualNetworkRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes'), 'exclude': lambda f: f is None }})
     
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateVirtualNetworkRequestBody:
     data: UpdateVirtualNetworkRequestBodyData = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})
