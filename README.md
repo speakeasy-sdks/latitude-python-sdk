@@ -1,14 +1,14 @@
-# Latitude Python SDK
-
-Everything you need to deploy and manage single-tenant, high-performance bare metal servers.
+<div align="center">
+   <picture>
+        <img src="https://user-images.githubusercontent.com/68016351/223031191-fff87dd7-a3bd-4974-acc2-304b2ee5128e.png" width="500">
+   </picture>
+   <p>Everything you need to deploy and manage single-tenant, high-performance bare metal servers.</p>
+   <a href="https://github.com/speakeasy-sdks/latitude-python-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/latitude-python-sdk/speakeasy_sdk_generation.yml?style=for-the-badge" /></a>
+   <a href="https://docs.latitude.sh/reference/summary"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000&style=for-the-badge" /></a>
 
 The Latitude.sh API gives you programmatic access to all resources available on the platform. With full control over the entire Latitude.sh platform, you can build integrations, custom dashboards, and manage your servers from your own clients.
 
-<div align="left">
-   <a href="https://github.com/speakeasy-sdks/latitude-go-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/latitude-python-sdk/speakeasy_sdk_generation.yml?style=for-the-badge" /></a>
-   <a href="https://docs.latitude.sh/reference/summary"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000&style=for-the-badge" /></a>
-
-Please note that the following installation example with pip is illustrative and will not download a package until a publishing token is provided as a github secret. To test out the repo you may clone it locally and run `pip install -e ../path/to/local/clone/` .
+***Please note that the following installation example with pip is illustrative and will not download a package until a publishing token is provided as a github secret. To test out the repo you may clone it locally and run `pip install -e ../path/to/local/clone/` .***
 
 <!-- Start SDK Installation -->
 ## SDK Installation
