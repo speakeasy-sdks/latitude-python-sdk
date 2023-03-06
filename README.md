@@ -14,7 +14,7 @@ Please note that the following installation example with pip is illustrative and
 ## SDK Installation
 
 ```bash
-pip install openapi
+pip install latitude
 ```
 <!-- End SDK Installation -->
 ## Authentication
