@@ -18,39 +18,37 @@ class IPAddresses:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
-    def get_ip(self, request: operations.GetIPRequest) -> operations.GetIPResponse:
+        
+    def get_ip(self, request: operations.GetIPRequest, security: operations.GetIPSecurity) -> operations.GetIPResponse:
         r"""Retrieve an IP
         Retrieve an IP Address
         """
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/ips/{id}", request.path_params)
+        url = utils.generate_url(base_url, '/ips/{id}', request.path_params)
         
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("GET", url, params=query_params)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetIPResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetIPResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.IPAddress])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.IPAddress])
                 res.ip_address = out
-        elif r.status_code == 404:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 404:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res
 
-    
-    def get_ips(self, request: operations.GetIpsRequest) -> operations.GetIpsResponse:
+    def get_ips(self, request: operations.GetIpsRequest, security: operations.GetIpsSecurity) -> operations.GetIpsResponse:
         r"""List IPs
         List all Management and Additional IP Addresses.
          • Management IPs are IPs that are used for the management IP of a device.
@@ -61,28 +59,28 @@ class IPAddresses:
         
         base_url = self._server_url
         
-        url = base_url.removesuffix("/") + "/ips"
+        url = base_url.removesuffix('/') + '/ips'
         
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("GET", url, params=query_params)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetIpsResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetIpsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.IPAddresses])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.IPAddresses])
                 res.ip_addresses = out
-        elif r.status_code == 404:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 404:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
-        elif r.status_code == 422:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 422:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res

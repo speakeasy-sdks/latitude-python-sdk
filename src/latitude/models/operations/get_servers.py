@@ -1,9 +1,14 @@
 from __future__ import annotations
 import dataclasses
-from ..shared import security as shared_security
+import requests
 from ..shared import servers as shared_servers
 from typing import Optional
 
+
+@dataclasses.dataclass
+class GetServersSecurity:
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+    
 
 @dataclasses.dataclass
 class GetServersQueryParams:
@@ -20,19 +25,14 @@ class GetServersQueryParams:
     
 
 @dataclasses.dataclass
-class GetServersSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
-    
-
-@dataclasses.dataclass
 class GetServersRequest:
     query_params: GetServersQueryParams = dataclasses.field()
-    security: GetServersSecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
 class GetServersResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     servers: Optional[shared_servers.Servers] = dataclasses.field(default=None)
     

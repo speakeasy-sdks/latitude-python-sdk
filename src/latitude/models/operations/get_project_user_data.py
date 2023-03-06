@@ -1,9 +1,14 @@
 from __future__ import annotations
 import dataclasses
-from ..shared import security as shared_security
+import requests
 from ..shared import user_data as shared_user_data
 from typing import Optional
 
+
+@dataclasses.dataclass
+class GetProjectUserDataSecurity:
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+    
 
 @dataclasses.dataclass
 class GetProjectUserDataPathParams:
@@ -18,20 +23,15 @@ class GetProjectUserDataQueryParams:
     
 
 @dataclasses.dataclass
-class GetProjectUserDataSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
-    
-
-@dataclasses.dataclass
 class GetProjectUserDataRequest:
     path_params: GetProjectUserDataPathParams = dataclasses.field()
     query_params: GetProjectUserDataQueryParams = dataclasses.field()
-    security: GetProjectUserDataSecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
 class GetProjectUserDataResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     user_data: Optional[shared_user_data.UserData] = dataclasses.field(default=None)
     

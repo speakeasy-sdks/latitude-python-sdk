@@ -1,13 +1,18 @@
 from __future__ import annotations
 import dataclasses
+import requests
 from ..shared import error_object as shared_error_object
-from ..shared import security as shared_security
 from ..shared import server as shared_server
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from latitude import utils
 from typing import Optional
 
+
+@dataclasses.dataclass
+class CreateServerSecurity:
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+    
 class CreateServerRequestBodyDataAttributesOperatingSystemEnum(str, Enum):
     WINDOWS_SERVER_2019_STD_V1 = "windows_server_2019_std_v1"
     WINDOWS_SERVER_2019_DC_V1 = "windows_server_2019_dc_v1"
@@ -61,14 +66,14 @@ class CreateServerRequestBodyDataAttributesSiteEnum(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateServerRequestBodyDataAttributes:
-    hostname: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('hostname'), 'exclude': lambda f: f is None }})
-    operating_system: Optional[CreateServerRequestBodyDataAttributesOperatingSystemEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('operating_system'), 'exclude': lambda f: f is None }})
-    plan: Optional[CreateServerRequestBodyDataAttributesPlanEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('plan'), 'exclude': lambda f: f is None }})
-    project: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('project'), 'exclude': lambda f: f is None }})
-    raid: Optional[CreateServerRequestBodyDataAttributesRaidEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('raid'), 'exclude': lambda f: f is None }})
-    site: Optional[CreateServerRequestBodyDataAttributesSiteEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('site'), 'exclude': lambda f: f is None }})
-    ssh_keys: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ssh_keys'), 'exclude': lambda f: f is None }})
-    user_data: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('user_data'), 'exclude': lambda f: f is None }})
+    hostname: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hostname'), 'exclude': lambda f: f is None }})
+    operating_system: Optional[CreateServerRequestBodyDataAttributesOperatingSystemEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('operating_system'), 'exclude': lambda f: f is None }})
+    plan: Optional[CreateServerRequestBodyDataAttributesPlanEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('plan'), 'exclude': lambda f: f is None }})
+    project: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('project'), 'exclude': lambda f: f is None }})
+    raid: Optional[CreateServerRequestBodyDataAttributesRaidEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('raid'), 'exclude': lambda f: f is None }})
+    site: Optional[CreateServerRequestBodyDataAttributesSiteEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('site'), 'exclude': lambda f: f is None }})
+    ssh_keys: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ssh_keys'), 'exclude': lambda f: f is None }})
+    user_data: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user_data'), 'exclude': lambda f: f is None }})
     
 class CreateServerRequestBodyDataTypeEnum(str, Enum):
     SERVERS = "servers"
@@ -77,24 +82,18 @@ class CreateServerRequestBodyDataTypeEnum(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateServerRequestBodyData:
-    type: CreateServerRequestBodyDataTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
-    attributes: Optional[CreateServerRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes'), 'exclude': lambda f: f is None }})
+    type: CreateServerRequestBodyDataTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    attributes: Optional[CreateServerRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attributes'), 'exclude': lambda f: f is None }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateServerRequestBody:
-    data: Optional[CreateServerRequestBodyData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data'), 'exclude': lambda f: f is None }})
-    
-
-@dataclasses.dataclass
-class CreateServerSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
+    data: Optional[CreateServerRequestBodyData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass
 class CreateServerRequest:
-    security: CreateServerSecurity = dataclasses.field()
     request: Optional[CreateServerRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
@@ -103,5 +102,6 @@ class CreateServerResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_object: Optional[shared_error_object.ErrorObject] = dataclasses.field(default=None)
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     server: Optional[shared_server.Server] = dataclasses.field(default=None)
     

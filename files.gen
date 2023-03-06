@@ -23,6 +23,7 @@ src/latitude/vpn_sessions.py
 src/latitude/virtual_network_assignments.py
 src/latitude/virtual_networks.py
 src/latitude/sdk.py
+pylintrc
 setup.py
 src/latitude/__init__.py
 src/latitude/models/__init__.py
@@ -143,6 +144,5 @@ src/latitude/models/shared/virtual_network_assignment.py
 src/latitude/models/shared/virtual_network_assignments.py
 src/latitude/models/shared/virtual_network.py
 src/latitude/models/shared/virtual_networks.py
-src/latitude/models/shared/security.py
 src/latitude/models/shared/__init__.py
 USAGE.md

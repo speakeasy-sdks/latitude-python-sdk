@@ -18,69 +18,67 @@ class RescueMode:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
-    def server_exit_rescue_mode(self, request: operations.ServerExitRescueModeRequest) -> operations.ServerExitRescueModeResponse:
+        
+    def server_exit_rescue_mode(self, request: operations.ServerExitRescueModeRequest, security: operations.ServerExitRescueModeSecurity) -> operations.ServerExitRescueModeResponse:
         r"""Exits rescue mode for a Server
         Exits rescue mode on a given server.
         """
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/servers/{server_id}/exit_rescue_mode", request.path_params)
+        url = utils.generate_url(base_url, '/servers/{server_id}/exit_rescue_mode', request.path_params)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("POST", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('POST', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ServerExitRescueModeResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.ServerExitRescueModeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ServerRescue])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ServerRescue])
                 res.server_rescue = out
-        elif r.status_code == 403:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
-        elif r.status_code == 406:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 406:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res
 
-    
-    def server_start_rescue_mode(self, request: operations.ServerStartRescueModeRequest) -> operations.ServerStartRescueModeResponse:
+    def server_start_rescue_mode(self, request: operations.ServerStartRescueModeRequest, security: operations.ServerStartRescueModeSecurity) -> operations.ServerStartRescueModeResponse:
         r"""Puts a Server in rescue mode
         Starts rescue mode on a given server.
         """
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/servers/{server_id}/rescue_mode", request.path_params)
+        url = utils.generate_url(base_url, '/servers/{server_id}/rescue_mode', request.path_params)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("POST", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('POST', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ServerStartRescueModeResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.ServerStartRescueModeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 201:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ServerRescue])
+        if http_res.status_code == 201:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ServerRescue])
                 res.server_rescue = out
-        elif r.status_code == 403:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
-        elif r.status_code == 406:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 406:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res

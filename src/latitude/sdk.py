@@ -1,4 +1,3 @@
-
 import requests
 from . import utils
 from .account import Account
@@ -30,9 +29,7 @@ SERVERS = [
 	"https://api.latitude.sh",
 ]
 
-
 class Latitude:
-    
     api_keys: APIKeys
     api_version: APIVersion
     account: Account
@@ -57,28 +54,28 @@ class Latitude:
     vpn_sessions: VPNSessions
     virtual_network_assignments: VirtualNetworkAssignments
     virtual_networks: VirtualNetworks
-
+    
     _client: requests.Session
     _security_client: requests.Session
     
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "2.3.2"
-    _gen_version: str = "1.5.4"
+    _sdk_version: str = "2.4.0"
+    _gen_version: str = "1.8.4"
 
     def __init__(self) -> None:
         self._client = requests.Session()
         self._security_client = requests.Session()
         self._init_sdks()
 
-
-    def config_server_url(self, server_url: str, params: dict[str, str]):
+    def config_server_url(self, server_url: str, params: dict[str, str] = None):
         if params is not None:
-            self._server_url = utils.replace_parameters(server_url, params)
+            self._server_url = utils.template_url(server_url, params)
         else:
             self._server_url = server_url
 
         self._init_sdks()
+    
     
 
     def config_client(self, client: requests.Session):
@@ -86,8 +83,8 @@ class Latitude:
         self._init_sdks()
     
     
+    
     def _init_sdks(self):
-        
         self.api_keys = APIKeys(
             self._client,
             self._security_client,
@@ -303,5 +300,5 @@ class Latitude:
             self._sdk_version,
             self._gen_version
         )
-    
+        
     

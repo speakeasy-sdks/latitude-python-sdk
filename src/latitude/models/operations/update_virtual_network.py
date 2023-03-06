@@ -1,12 +1,17 @@
 from __future__ import annotations
 import dataclasses
-from ..shared import security as shared_security
+import requests
 from ..shared import virtual_network as shared_virtual_network
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from latitude import utils
 from typing import Optional
 
+
+@dataclasses.dataclass
+class UpdateVirtualNetworkSecurity:
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+    
 
 @dataclasses.dataclass
 class UpdateVirtualNetworkPathParams:
@@ -16,7 +21,7 @@ class UpdateVirtualNetworkPathParams:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateVirtualNetworkRequestBodyDataAttributes:
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('description'), 'exclude': lambda f: f is None }})
+    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
     
 class UpdateVirtualNetworkRequestBodyDataTypeEnum(str, Enum):
     VIRTUAL_NETWORK = "virtual_network"
@@ -25,26 +30,20 @@ class UpdateVirtualNetworkRequestBodyDataTypeEnum(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateVirtualNetworkRequestBodyData:
-    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('id') }})
-    type: UpdateVirtualNetworkRequestBodyDataTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
-    attributes: Optional[UpdateVirtualNetworkRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes'), 'exclude': lambda f: f is None }})
+    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    type: UpdateVirtualNetworkRequestBodyDataTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    attributes: Optional[UpdateVirtualNetworkRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attributes'), 'exclude': lambda f: f is None }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateVirtualNetworkRequestBody:
-    data: UpdateVirtualNetworkRequestBodyData = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('data') }})
-    
-
-@dataclasses.dataclass
-class UpdateVirtualNetworkSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
+    data: UpdateVirtualNetworkRequestBodyData = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
 
 @dataclasses.dataclass
 class UpdateVirtualNetworkRequest:
     path_params: UpdateVirtualNetworkPathParams = dataclasses.field()
-    security: UpdateVirtualNetworkSecurity = dataclasses.field()
     request: Optional[UpdateVirtualNetworkRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
@@ -52,5 +51,6 @@ class UpdateVirtualNetworkRequest:
 class UpdateVirtualNetworkResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     virtual_network: Optional[shared_virtual_network.VirtualNetwork] = dataclasses.field(default=None)
     

@@ -1,12 +1,12 @@
 management:
     openapi-checksum: fd56578f22b185ea4e06106322a66b75
     openapi-version: v2
-    speakeasy-version: 1.5.4
-generation:
-    telemetryEnabled: false
-    sdkClassName: latitude
-    sdkFlattening: true
+    speakeasy-version: 1.8.4
 python:
-    version: 2.3.2
+    version: 2.4.0
     packagename: latitude
     author: latitude
+generation:
+    sdkClassName: latitude
+    sdkFlattening: true
+    telemetryEnabled: false

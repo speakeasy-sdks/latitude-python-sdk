@@ -1,7 +1,13 @@
 from __future__ import annotations
 import dataclasses
-from ..shared import security as shared_security
+import requests
+from typing import Optional
 
+
+@dataclasses.dataclass
+class DeleteProjectSSHKeySecurity:
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+    
 
 @dataclasses.dataclass
 class DeleteProjectSSHKeyPathParams:
@@ -10,18 +16,13 @@ class DeleteProjectSSHKeyPathParams:
     
 
 @dataclasses.dataclass
-class DeleteProjectSSHKeySecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
-    
-
-@dataclasses.dataclass
 class DeleteProjectSSHKeyRequest:
     path_params: DeleteProjectSSHKeyPathParams = dataclasses.field()
-    security: DeleteProjectSSHKeySecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
 class DeleteProjectSSHKeyResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

@@ -18,106 +18,102 @@ class Projects:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
-    def create_project(self, request: operations.CreateProjectRequest) -> operations.CreateProjectResponse:
+        
+    def create_project(self, request: operations.CreateProjectRequest, security: operations.CreateProjectSecurity) -> operations.CreateProjectResponse:
         r"""Create a Project
         """
         
         base_url = self._server_url
         
-        url = base_url.removesuffix("/") + "/projects"
+        url = base_url.removesuffix('/') + '/projects'
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("POST", url, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.CreateProjectResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.CreateProjectResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 201:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.CreateProject201ApplicationJSON])
+        if http_res.status_code == 201:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.CreateProject201ApplicationJSON])
                 res.create_project_201_application_json_object = out
-        elif r.status_code == 400:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 400:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
-        elif r.status_code == 403:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
-        elif r.status_code == 422:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 422:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res
 
-    
-    def delete_project(self, request: operations.DeleteProjectRequest) -> operations.DeleteProjectResponse:
+    def delete_project(self, request: operations.DeleteProjectRequest, security: operations.DeleteProjectSecurity) -> operations.DeleteProjectResponse:
         r"""Delete a Project
         """
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/projects/{id_or_slug}", request.path_params)
+        url = utils.generate_url(base_url, '/projects/{id_or_slug}', request.path_params)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("DELETE", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('DELETE', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.DeleteProjectResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.DeleteProjectResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.DeleteProject200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteProject200ApplicationJSON])
                 res.delete_project_200_application_json_object = out
-        elif r.status_code == 403:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
-        elif r.status_code == 406:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 406:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res
 
-    
-    def get_project(self, request: operations.GetProjectRequest) -> operations.GetProjectResponse:
+    def get_project(self, request: operations.GetProjectRequest, security: operations.GetProjectSecurity) -> operations.GetProjectResponse:
         r"""Retrieve a Project
         """
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/projects/{id_or_slug}", request.path_params)
+        url = utils.generate_url(base_url, '/projects/{id_or_slug}', request.path_params)
         
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("GET", url, params=query_params)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetProjectResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetProjectResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetProject200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetProject200ApplicationJSON])
                 res.get_project_200_application_json_object = out
 
         return res
 
-    
-    def get_projects(self, request: operations.GetProjectsRequest) -> operations.GetProjectsResponse:
+    def get_projects(self, request: operations.GetProjectsRequest, security: operations.GetProjectsSecurity) -> operations.GetProjectsResponse:
         r"""List all Projects
         Returns a list of all projects for the current team
         
@@ -125,52 +121,51 @@ class Projects:
         
         base_url = self._server_url
         
-        url = base_url.removesuffix("/") + "/projects"
+        url = base_url.removesuffix('/') + '/projects'
         
         query_params = utils.get_query_params(request.query_params)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("GET", url, params=query_params)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetProjectsResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetProjectsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.Projects])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Projects])
                 res.projects = out
 
         return res
 
-    
-    def update_project(self, request: operations.UpdateProjectRequest) -> operations.UpdateProjectResponse:
+    def update_project(self, request: operations.UpdateProjectRequest, security: operations.UpdateProjectSecurity) -> operations.UpdateProjectResponse:
         r"""Update a Project
         """
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/projects/{id_or_slug}", request.path_params)
+        url = utils.generate_url(base_url, '/projects/{id_or_slug}', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("PATCH", url, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('PATCH', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.UpdateProjectResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.UpdateProjectResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.UpdateProject200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateProject200ApplicationJSON])
                 res.update_project_200_application_json_object = out
-        elif r.status_code == 403:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res
