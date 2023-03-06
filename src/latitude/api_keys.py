@@ -18,9 +18,8 @@ class APIKeys:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
-    def delete_api_key(self, request: operations.DeleteAPIKeyRequest) -> operations.DeleteAPIKeyResponse:
+        
+    def delete_api_key(self, request: operations.DeleteAPIKeyRequest, security: operations.DeleteAPIKeySecurity) -> operations.DeleteAPIKeyResponse:
         r"""Delete an API Key
         Delete an existing API Key. Once deleted, the API Key can no longer be used to access the API.
         
@@ -28,27 +27,26 @@ class APIKeys:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/auth/api_keys/{id}", request.path_params)
+        url = utils.generate_url(base_url, '/auth/api_keys/{id}', request.path_params)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("DELETE", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('DELETE', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.DeleteAPIKeyResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.DeleteAPIKeyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
+        if http_res.status_code == 200:
             pass
-        elif r.status_code == 404:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 404:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res
 
-    
-    def get_api_keys(self, request: operations.GetAPIKeysRequest) -> operations.GetAPIKeysResponse:
+    def get_api_keys(self, security: operations.GetAPIKeysSecurity) -> operations.GetAPIKeysResponse:
         r"""List all API Keys
         Returns a list of all API keys for the current user
         
@@ -56,25 +54,24 @@ class APIKeys:
         
         base_url = self._server_url
         
-        url = base_url.removesuffix("/") + "/auth/api_keys"
+        url = base_url.removesuffix('/') + '/auth/api_keys'
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetAPIKeysResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetAPIKeysResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.APIKey])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.APIKey])
                 res.api_key = out
 
         return res
 
-    
-    def post_api_key(self, request: operations.PostAPIKeyRequest) -> operations.PostAPIKeyResponse:
+    def post_api_key(self, request: operations.PostAPIKeyRequest, security: operations.PostAPIKeySecurity) -> operations.PostAPIKeyResponse:
         r"""Create an API Key
         Create a new API Key that is tied to the current user account. The created API key is only listed ONCE upon creation. It can however be regenerated or deleted.
         
@@ -82,37 +79,36 @@ class APIKeys:
         
         base_url = self._server_url
         
-        url = base_url.removesuffix("/") + "/auth/api_keys"
+        url = base_url.removesuffix('/') + '/auth/api_keys'
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("POST", url, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PostAPIKeyResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.PostAPIKeyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 201:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.PostAPIKey201ApplicationJSON])
+        if http_res.status_code == 201:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostAPIKey201ApplicationJSON])
                 res.post_api_key_201_application_json_object = out
-        elif r.status_code == 400:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 400:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
-        elif r.status_code == 422:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 422:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res
 
-    
-    def update_api_key(self, request: operations.UpdateAPIKeyRequest) -> operations.UpdateAPIKeyResponse:
+    def update_api_key(self, request: operations.UpdateAPIKeyRequest, security: operations.UpdateAPIKeySecurity) -> operations.UpdateAPIKeyResponse:
         r"""Regenerate an API Key
         Regenerate an existing API Key that is tied to the current user. This overrides the previous key.
         
@@ -120,35 +116,35 @@ class APIKeys:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/auth/api_keys/{id}", request.path_params)
+        url = utils.generate_url(base_url, '/auth/api_keys/{id}', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("PUT", url, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('PUT', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.UpdateAPIKeyResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.UpdateAPIKeyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.UpdateAPIKey200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateAPIKey200ApplicationJSON])
                 res.update_api_key_200_application_json_object = out
-        elif r.status_code == 400:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 400:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
-        elif r.status_code == 404:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 404:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
-        elif r.status_code == 422:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 422:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res

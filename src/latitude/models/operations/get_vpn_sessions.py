@@ -1,12 +1,17 @@
 from __future__ import annotations
 import dataclasses
-from ..shared import security as shared_security
+import requests
 from ..shared import vpn_session_data_with_password as shared_vpn_session_data_with_password
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from latitude import utils
 from typing import Any, Optional
 
+
+@dataclasses.dataclass
+class GetVpnSessionsSecurity:
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+    
 class GetVpnSessionsFilterSiteEnum(str, Enum):
     MH1 = "MH1"
     SP1 = "SP1"
@@ -28,21 +33,15 @@ class GetVpnSessionsQueryParams:
     
 
 @dataclasses.dataclass
-class GetVpnSessionsSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
-    
-
-@dataclasses.dataclass
 class GetVpnSessionsRequest:
     query_params: GetVpnSessionsQueryParams = dataclasses.field()
-    security: GetVpnSessionsSecurity = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetVpnSessions200ApplicationJSON:
-    data: Optional[list[shared_vpn_session_data_with_password.VpnSessionDataWithPassword]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data'), 'exclude': lambda f: f is None }})
-    meta: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('meta'), 'exclude': lambda f: f is None }})
+    data: Optional[list[shared_vpn_session_data_with_password.VpnSessionDataWithPassword]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
+    meta: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('meta'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass
@@ -50,4 +49,5 @@ class GetVpnSessionsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     get_vpn_sessions_200_application_json_object: Optional[GetVpnSessions200ApplicationJSON] = dataclasses.field(default=None)
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

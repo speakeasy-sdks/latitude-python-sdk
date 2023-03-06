@@ -7,9 +7,7 @@ s = latitude.Latitude()
    
 req = operations.DeleteAPIKeyRequest(
     security=operations.DeleteAPIKeySecurity(
-        bearer=shared.SchemeBearer(
-            api_key="YOUR_API_KEY_HERE",
-        ),
+        bearer="YOUR_API_KEY_HERE",
     ),
     path_params=operations.DeleteAPIKeyPathParams(
         id="unde",

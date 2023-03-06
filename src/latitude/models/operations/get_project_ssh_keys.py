@@ -1,9 +1,14 @@
 from __future__ import annotations
 import dataclasses
-from ..shared import security as shared_security
+import requests
 from ..shared import ssh_key as shared_ssh_key
 from typing import Optional
 
+
+@dataclasses.dataclass
+class GetProjectSSHKeysSecurity:
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+    
 
 @dataclasses.dataclass
 class GetProjectSSHKeysPathParams:
@@ -16,20 +21,15 @@ class GetProjectSSHKeysQueryParams:
     
 
 @dataclasses.dataclass
-class GetProjectSSHKeysSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
-    
-
-@dataclasses.dataclass
 class GetProjectSSHKeysRequest:
     path_params: GetProjectSSHKeysPathParams = dataclasses.field()
     query_params: GetProjectSSHKeysQueryParams = dataclasses.field()
-    security: GetProjectSSHKeysSecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
 class GetProjectSSHKeysResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     ssh_key: Optional[shared_ssh_key.SSHKey] = dataclasses.field(default=None)
     

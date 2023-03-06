@@ -1,9 +1,14 @@
 from __future__ import annotations
 import dataclasses
-from ..shared import security as shared_security
+import requests
 from ..shared import virtual_network_assignments as shared_virtual_network_assignments
 from typing import Optional
 
+
+@dataclasses.dataclass
+class GetVirtualNetworksAssignmentsSecurity:
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+    
 
 @dataclasses.dataclass
 class GetVirtualNetworksAssignmentsQueryParams:
@@ -14,19 +19,14 @@ class GetVirtualNetworksAssignmentsQueryParams:
     
 
 @dataclasses.dataclass
-class GetVirtualNetworksAssignmentsSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
-    
-
-@dataclasses.dataclass
 class GetVirtualNetworksAssignmentsRequest:
     query_params: GetVirtualNetworksAssignmentsQueryParams = dataclasses.field()
-    security: GetVirtualNetworksAssignmentsSecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
 class GetVirtualNetworksAssignmentsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     virtual_network_assignments: Optional[shared_virtual_network_assignments.VirtualNetworkAssignments] = dataclasses.field(default=None)
     

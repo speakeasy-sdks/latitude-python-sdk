@@ -18,9 +18,8 @@ class BandwidthPackages:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
-    def get_plans_bandwidth(self, request: operations.GetPlansBandwidthRequest) -> operations.GetPlansBandwidthResponse:
+        
+    def get_plans_bandwidth(self, security: operations.GetPlansBandwidthSecurity) -> operations.GetPlansBandwidthResponse:
         r"""List all bandwidth packages available
         Lists all bandwidth packages offered to your current team.
         
@@ -28,25 +27,24 @@ class BandwidthPackages:
         
         base_url = self._server_url
         
-        url = base_url.removesuffix("/") + "/plans/bandwidth"
+        url = base_url.removesuffix('/') + '/plans/bandwidth'
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetPlansBandwidthResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetPlansBandwidthResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.PlansBandwidth])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PlansBandwidth])
                 res.plans_bandwidth = out
 
         return res
 
-    
-    def update_plans_bandwidth(self, request: operations.UpdatePlansBandwidthRequest) -> operations.UpdatePlansBandwidthResponse:
+    def update_plans_bandwidth(self, request: operations.UpdatePlansBandwidthRequest, security: operations.UpdatePlansBandwidthSecurity) -> operations.UpdatePlansBandwidthResponse:
         r"""Buy or remove bandwidth packages
         Allow to increase or decrease bandwidth packages. Only admins and owners can request.
         
@@ -54,27 +52,27 @@ class BandwidthPackages:
         
         base_url = self._server_url
         
-        url = base_url.removesuffix("/") + "/plans/bandwidth"
+        url = base_url.removesuffix('/') + '/plans/bandwidth'
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("POST", url, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.UpdatePlansBandwidthResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.UpdatePlansBandwidthResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.PlansBandwidth])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.PlansBandwidth])
                 res.plans_bandwidth = out
-        elif r.status_code == 403:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res

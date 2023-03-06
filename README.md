@@ -14,7 +14,7 @@ Please note that the following installation example with pip is illustrative and
 ## SDK Installation
 
 ```bash
-pip install latitude
+pip install openapi
 ```
 <!-- End SDK Installation -->
 ## Authentication
@@ -33,9 +33,7 @@ s = latitude.Latitude()
    
 req = operations.DeleteAPIKeyRequest(
     security=operations.DeleteAPIKeySecurity(
-        bearer=shared.SchemeBearer(
-            api_key="YOUR_API_KEY_HERE",
-        ),
+        bearer="YOUR_API_KEY_HERE",
     ),
     path_params=operations.DeleteAPIKeyPathParams(
         id="unde",

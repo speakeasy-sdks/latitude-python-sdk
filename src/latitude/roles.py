@@ -18,37 +18,35 @@ class Roles:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
-    def get_role_id(self, request: operations.GetRoleIDRequest) -> operations.GetRoleIDResponse:
+        
+    def get_role_id(self, request: operations.GetRoleIDRequest, security: operations.GetRoleIDSecurity) -> operations.GetRoleIDResponse:
         r"""Retrieve a Role
         """
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/roles/{id}", request.path_params)
+        url = utils.generate_url(base_url, '/roles/{id}', request.path_params)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetRoleIDResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetRoleIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.Role])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Role])
                 res.role = out
-        elif r.status_code == 404:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ErrorObject])
+        elif http_res.status_code == 404:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
 
         return res
 
-    
-    def get_roles(self, request: operations.GetRolesRequest) -> operations.GetRolesResponse:
+    def get_roles(self, security: operations.GetRolesSecurity) -> operations.GetRolesResponse:
         r"""List all Roles
         Returns a list of all roles that can be assigned to users
         
@@ -56,19 +54,19 @@ class Roles:
         
         base_url = self._server_url
         
-        url = base_url.removesuffix("/") + "/roles"
+        url = base_url.removesuffix('/') + '/roles'
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetRolesResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.GetRolesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[operations.GetRoles200ApplicationJSON])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoles200ApplicationJSON])
                 res.get_roles_200_application_json_object = out
 
         return res

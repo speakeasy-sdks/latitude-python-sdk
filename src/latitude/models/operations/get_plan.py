@@ -1,10 +1,15 @@
 from __future__ import annotations
 import dataclasses
+import requests
 from ..shared import error_object as shared_error_object
 from ..shared import plan as shared_plan
-from ..shared import security as shared_security
 from typing import Optional
 
+
+@dataclasses.dataclass
+class GetPlanSecurity:
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+    
 
 @dataclasses.dataclass
 class GetPlanPathParams:
@@ -12,14 +17,8 @@ class GetPlanPathParams:
     
 
 @dataclasses.dataclass
-class GetPlanSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
-    
-
-@dataclasses.dataclass
 class GetPlanRequest:
     path_params: GetPlanPathParams = dataclasses.field()
-    security: GetPlanSecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
@@ -28,4 +27,5 @@ class GetPlanResponse:
     status_code: int = dataclasses.field()
     error_object: Optional[shared_error_object.ErrorObject] = dataclasses.field(default=None)
     plan: Optional[shared_plan.Plan] = dataclasses.field(default=None)
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

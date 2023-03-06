@@ -9,5 +9,5 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class VpnSessionWithPassword:
-    data: Optional[shared_vpn_session_data_with_password.VpnSessionDataWithPassword] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('data'), 'exclude': lambda f: f is None }})
+    data: Optional[shared_vpn_session_data_with_password.VpnSessionDataWithPassword] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
     

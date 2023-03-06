@@ -1,23 +1,19 @@
 from __future__ import annotations
 import dataclasses
+import requests
 from ..shared import regions as shared_regions
-from ..shared import security as shared_security
 from typing import Optional
 
 
 @dataclasses.dataclass
 class GetRegionsSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
-    
-
-@dataclasses.dataclass
-class GetRegionsRequest:
-    security: GetRegionsSecurity = dataclasses.field()
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
 
 @dataclasses.dataclass
 class GetRegionsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     regions: Optional[shared_regions.Regions] = dataclasses.field(default=None)
     

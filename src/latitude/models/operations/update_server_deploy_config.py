@@ -1,13 +1,18 @@
 from __future__ import annotations
 import dataclasses
+import requests
 from ..shared import deploy_config as shared_deploy_config
 from ..shared import error_object as shared_error_object
-from ..shared import security as shared_security
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from latitude import utils
 from typing import Optional
 
+
+@dataclasses.dataclass
+class UpdateServerDeployConfigSecurity:
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+    
 
 @dataclasses.dataclass
 class UpdateServerDeployConfigPathParams:
@@ -39,11 +44,11 @@ class UpdateServerDeployConfigRequestBodyAttributesRaidEnum(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateServerDeployConfigRequestBodyAttributes:
-    hostname: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('hostname'), 'exclude': lambda f: f is None }})
-    operating_system: Optional[UpdateServerDeployConfigRequestBodyAttributesOperatingSystemEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('operating_system'), 'exclude': lambda f: f is None }})
-    raid: Optional[UpdateServerDeployConfigRequestBodyAttributesRaidEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('raid'), 'exclude': lambda f: f is None }})
-    ssh_keys: Optional[list[int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('ssh_keys'), 'exclude': lambda f: f is None }})
-    user_data: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('user_data'), 'exclude': lambda f: f is None }})
+    hostname: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hostname'), 'exclude': lambda f: f is None }})
+    operating_system: Optional[UpdateServerDeployConfigRequestBodyAttributesOperatingSystemEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('operating_system'), 'exclude': lambda f: f is None }})
+    raid: Optional[UpdateServerDeployConfigRequestBodyAttributesRaidEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('raid'), 'exclude': lambda f: f is None }})
+    ssh_keys: Optional[list[int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ssh_keys'), 'exclude': lambda f: f is None }})
+    user_data: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user_data'), 'exclude': lambda f: f is None }})
     
 class UpdateServerDeployConfigRequestBodyTypeEnum(str, Enum):
     DEPLOY_CONFIG = "deploy_config"
@@ -52,19 +57,13 @@ class UpdateServerDeployConfigRequestBodyTypeEnum(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateServerDeployConfigRequestBody:
-    type: UpdateServerDeployConfigRequestBodyTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('type') }})
-    attributes: Optional[UpdateServerDeployConfigRequestBodyAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('attributes'), 'exclude': lambda f: f is None }})
-    
-
-@dataclasses.dataclass
-class UpdateServerDeployConfigSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
+    type: UpdateServerDeployConfigRequestBodyTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    attributes: Optional[UpdateServerDeployConfigRequestBodyAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attributes'), 'exclude': lambda f: f is None }})
     
 
 @dataclasses.dataclass
 class UpdateServerDeployConfigRequest:
     path_params: UpdateServerDeployConfigPathParams = dataclasses.field()
-    security: UpdateServerDeployConfigSecurity = dataclasses.field()
     request: Optional[UpdateServerDeployConfigRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
@@ -74,4 +73,5 @@ class UpdateServerDeployConfigResponse:
     status_code: int = dataclasses.field()
     deploy_config: Optional[shared_deploy_config.DeployConfig] = dataclasses.field(default=None)
     error_object: Optional[shared_error_object.ErrorObject] = dataclasses.field(default=None)
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

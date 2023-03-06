@@ -1,9 +1,14 @@
 from __future__ import annotations
 import dataclasses
+import requests
 from ..shared import error_object as shared_error_object
-from ..shared import security as shared_security
 from typing import Optional
 
+
+@dataclasses.dataclass
+class DestroyServerSecurity:
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
+    
 
 @dataclasses.dataclass
 class DestroyServerPathParams:
@@ -11,14 +16,8 @@ class DestroyServerPathParams:
     
 
 @dataclasses.dataclass
-class DestroyServerSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header' }})
-    
-
-@dataclasses.dataclass
 class DestroyServerRequest:
     path_params: DestroyServerPathParams = dataclasses.field()
-    security: DestroyServerSecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
@@ -26,4 +25,5 @@ class DestroyServerResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_object: Optional[shared_error_object.ErrorObject] = dataclasses.field(default=None)
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     
