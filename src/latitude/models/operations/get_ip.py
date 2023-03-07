@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import error_object as shared_error_object
 from ..shared import ip_address as shared_ip_address
 from typing import Optional
@@ -34,5 +34,5 @@ class GetIPResponse:
     status_code: int = dataclasses.field()
     error_object: Optional[shared_error_object.ErrorObject] = dataclasses.field(default=None)
     ip_address: Optional[shared_ip_address.IPAddress] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

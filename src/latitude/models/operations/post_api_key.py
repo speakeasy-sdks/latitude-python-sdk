@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import api_key as shared_api_key
 from ..shared import create_api_key as shared_create_api_key
 from ..shared import error_object as shared_error_object
@@ -31,5 +31,5 @@ class PostAPIKeyResponse:
     status_code: int = dataclasses.field()
     error_object: Optional[shared_error_object.ErrorObject] = dataclasses.field(default=None)
     post_api_key_201_application_json_object: Optional[PostAPIKey201ApplicationJSON] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

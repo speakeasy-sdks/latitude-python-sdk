@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import teams as shared_teams
 from typing import Optional
 
@@ -14,6 +14,6 @@ class GetUserTeamsSecurity:
 class GetUserTeamsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     teams: Optional[shared_teams.Teams] = dataclasses.field(default=None)
     

@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import virtual_network as shared_virtual_network
 from dataclasses_json import Undefined, dataclass_json
 from latitude import utils
@@ -33,5 +33,5 @@ class GetVirtualNetworkResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     get_virtual_network_200_application_json_object: Optional[GetVirtualNetwork200ApplicationJSON] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

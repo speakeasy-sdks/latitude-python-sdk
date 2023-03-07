@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import deploy_config as shared_deploy_config
 from typing import Optional
 
@@ -25,5 +25,5 @@ class GetServerDeployConfigResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     deploy_config: Optional[shared_deploy_config.DeployConfig] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
