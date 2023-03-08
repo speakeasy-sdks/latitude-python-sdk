@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import error_object as shared_error_object
 from ..shared import virtual_network as shared_virtual_network
 from typing import Optional
@@ -26,6 +26,6 @@ class DestroyVirtualNetworkResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_object: Optional[shared_error_object.ErrorObject] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     virtual_network: Optional[shared_virtual_network.VirtualNetwork] = dataclasses.field(default=None)
     

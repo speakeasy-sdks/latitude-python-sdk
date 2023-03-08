@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import error_object as shared_error_object
 from ..shared import user_update as shared_user_update
 from dataclasses_json import Undefined, dataclass_json
@@ -69,5 +69,5 @@ class PatchUserProfileResponse:
     status_code: int = dataclasses.field()
     error_object: Optional[shared_error_object.ErrorObject] = dataclasses.field(default=None)
     patch_user_profile_200_application_json_object: Optional[PatchUserProfile200ApplicationJSON] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

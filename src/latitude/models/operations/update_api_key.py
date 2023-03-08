@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import api_key as shared_api_key
 from ..shared import error_object as shared_error_object
 from ..shared import update_api_key as shared_update_api_key
@@ -36,6 +36,6 @@ class UpdateAPIKeyResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     error_object: Optional[shared_error_object.ErrorObject] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     update_api_key_200_application_json_object: Optional[UpdateAPIKey200ApplicationJSON] = dataclasses.field(default=None)
     

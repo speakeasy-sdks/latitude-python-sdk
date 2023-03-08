@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import plan_data as shared_plan_data
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -45,5 +45,5 @@ class GetPlansResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     get_plans_200_application_json_object: Optional[GetPlans200ApplicationJSON] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

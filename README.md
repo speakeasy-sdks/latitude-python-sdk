@@ -15,7 +15,7 @@ The Latitude.sh API gives you programmatic access to all resources available on 
 ## SDK Installation
 
 ```bash
-pip install latitude
+pip install openapi
 ```
 <!-- End SDK Installation -->
 ## Authentication
