@@ -60,8 +60,8 @@ class Latitude:
     
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "2.4.2"
-    _gen_version: str = "1.8.6"
+    _sdk_version: str = "2.4.3"
+    _gen_version: str = "1.8.7"
 
     def __init__(self) -> None:
         self._client = requests_http.Session()
