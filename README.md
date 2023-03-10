@@ -1,7 +1,5 @@
 <div align="center">
-   <picture>
         <img src="https://user-images.githubusercontent.com/68016351/223031191-fff87dd7-a3bd-4974-acc2-304b2ee5128e.png" width="500">
-   </picture>
    <p>Everything you need to deploy and manage single-tenant, high-performance bare metal servers.</p>
    <a href="https://github.com/speakeasy-sdks/latitude-python-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/latitude-python-sdk/speakeasy_sdk_generation.yml?style=for-the-badge" /></a>
    <a href="https://docs.latitude.sh/reference/summary"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000&style=for-the-badge" /></a>
