@@ -65,3 +65,9 @@ Based on:
 Based on:
 - OpenAPI Doc v2 ./openapi.json
 - Speakeasy CLI 1.9.1 https://github.com/speakeasy-api/speakeasy
+
+## Version 2.5.1
+### Changes
+Based on:
+- OpenAPI Doc v2 ./openapi.json
+- Speakeasy CLI 1.9.2 https://github.com/speakeasy-api/speakeasy

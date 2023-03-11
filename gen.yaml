@@ -1,9 +1,9 @@
 management:
     openapi-checksum: fd56578f22b185ea4e06106322a66b75
     openapi-version: v2
-    speakeasy-version: 1.9.1
+    speakeasy-version: 1.9.2
 python:
-    version: 2.5.0
+    version: 2.5.1
     packagename: latitude
     author: latitude
 generation:
