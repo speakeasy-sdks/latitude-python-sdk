@@ -17,7 +17,7 @@ jobs:
       speakeasy_version: latest
       openapi_doc_location: ./openapi.json
       languages: |-
-        - python
+        - python: ./
       publish_python: true # Tells the generation action to generate artifacts for publishing to PyPi
       mode: pr
       force: ${{ github.event.inputs.force }}
