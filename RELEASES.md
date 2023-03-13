@@ -71,3 +71,11 @@ Based on:
 Based on:
 - OpenAPI Doc v2 ./openapi.json
 - Speakeasy CLI 1.9.2 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-13 21:35:40
+### Changes
+Based on:
+- OpenAPI Doc v2 ./openapi.json
+- Speakeasy CLI 1.9.2 https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v2.6.0] https://pypi.org/project/openapi/2.6.0 - .
