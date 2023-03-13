@@ -8,7 +8,7 @@ generation:
   sdkClassName: latitude
   sdkFlattening: true
 python:
-  version: 2.6.3
+  version: 2.6.4
   author: speakeasy-sdks
   description: Python Client SDK for Latitude API
   packageName: latitude-python-sdk

@@ -13,7 +13,7 @@ The Latitude.sh API gives you programmatic access to all resources available on 
 ## SDK Installation
 
 ```bash
-pip install latitude
+pip install latitude-python-sdk
 ```
 <!-- End SDK Installation -->
 ## Authentication
@@ -25,10 +25,10 @@ The key is shown to your only when it's created. If you lose it, you'll have to 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import latitudeapi
-from latitudeapi.models import operations, shared
+import latitude
+from latitude.models import operations, shared
 
-s = latitudeapi.Latitudeapi()
+s = latitude.Latitude()
    
 req = operations.DeleteAPIKeyRequest(
     security=operations.DeleteAPIKeySecurity(
