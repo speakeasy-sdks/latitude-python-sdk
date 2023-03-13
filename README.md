@@ -25,10 +25,10 @@ The key is shown to your only when it's created. If you lose it, you'll have to 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import latitude
-from latitude.models import operations, shared
+import latitudeapi
+from latitudeapi.models import operations, shared
 
-s = latitude.Latitude()
+s = latitudeapi.Latitudeapi()
    
 req = operations.DeleteAPIKeyRequest(
     security=operations.DeleteAPIKeySecurity(
