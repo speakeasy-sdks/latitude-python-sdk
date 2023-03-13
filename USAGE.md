@@ -1,9 +1,9 @@
 <!-- Start SDK Example Usage -->
 ```python
-import latitudeapi
-from latitudeapi.models import operations, shared
+import latitude
+from latitude.models import operations, shared
 
-s = latitudeapi.Latitudeapi()
+s = latitude.Latitude()
    
 req = operations.DeleteAPIKeyRequest(
     security=operations.DeleteAPIKeySecurity(
