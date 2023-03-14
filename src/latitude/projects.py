@@ -43,15 +43,7 @@ class Projects:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.CreateProject201ApplicationJSON])
                 res.create_project_201_application_json_object = out
-        elif http_res.status_code == 400:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
-                res.error_object = out
-        elif http_res.status_code == 403:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
-                res.error_object = out
-        elif http_res.status_code == 422:
+        elif http_res.status_code in [400, 403, 422]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
@@ -78,11 +70,7 @@ class Projects:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteProject200ApplicationJSON])
                 res.delete_project_200_application_json_object = out
-        elif http_res.status_code == 403:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
-                res.error_object = out
-        elif http_res.status_code == 406:
+        elif http_res.status_code in [403, 406]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out

@@ -63,9 +63,7 @@ class APIVersion:
 
         res = operations.UpdateCurrentVersionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code == 200:
-            pass
-        elif http_res.status_code == 406:
+        if http_res.status_code in [200, 406]:
             pass
 
         return res

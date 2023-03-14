@@ -37,9 +37,7 @@ class SSHKeys:
 
         res = operations.DeleteProjectSSHKeyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code == 200:
-            pass
-        elif http_res.status_code == 404:
+        if http_res.status_code in [200, 404]:
             pass
 
         return res
@@ -122,9 +120,7 @@ class SSHKeys:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PostProjectSSHKey201ApplicationJSON])
                 res.post_project_ssh_key_201_application_json_object = out
-        elif http_res.status_code == 400:
-            pass
-        elif http_res.status_code == 422:
+        elif http_res.status_code in [400, 422]:
             pass
 
         return res
@@ -155,9 +151,7 @@ class SSHKeys:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PutProjectSSHKey200ApplicationJSON])
                 res.put_project_ssh_key_200_application_json_object = out
-        elif http_res.status_code == 400:
-            pass
-        elif http_res.status_code == 422:
+        elif http_res.status_code in [400, 422]:
             pass
 
         return res

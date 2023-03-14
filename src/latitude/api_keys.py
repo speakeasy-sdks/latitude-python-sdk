@@ -97,11 +97,7 @@ class APIKeys:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PostAPIKey201ApplicationJSON])
                 res.post_api_key_201_application_json_object = out
-        elif http_res.status_code == 400:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
-                res.error_object = out
-        elif http_res.status_code == 422:
+        elif http_res.status_code in [400, 422]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
@@ -134,15 +130,7 @@ class APIKeys:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.UpdateAPIKey200ApplicationJSON])
                 res.update_api_key_200_application_json_object = out
-        elif http_res.status_code == 400:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
-                res.error_object = out
-        elif http_res.status_code == 404:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
-                res.error_object = out
-        elif http_res.status_code == 422:
+        elif http_res.status_code in [400, 404, 422]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out

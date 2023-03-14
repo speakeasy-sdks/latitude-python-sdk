@@ -294,12 +294,15 @@ def _get_deep_object_query_params(metadata: dict, field_name: str, obj: any) -> 
                     if val is None:
                         continue
 
-                    if params.get(f'{metadata.get("field_name", field_name)}[{obj_param_metadata.get("field_name", obj_field.name)}]') is None:
-                        params[f'{metadata.get("field_name", field_name)}[{obj_param_metadata.get("field_name", obj_field.name)}]'] = [
+                    if params.get(
+                            f'{metadata.get("field_name", field_name)}[{obj_param_metadata.get("field_name", obj_field.name)}]') is None:
+                        params[
+                            f'{metadata.get("field_name", field_name)}[{obj_param_metadata.get("field_name", obj_field.name)}]'] = [
                         ]
 
                     params[
-                        f'{metadata.get("field_name", field_name)}[{obj_param_metadata.get("field_name", obj_field.name)}]'].append(_val_to_string(val))
+                        f'{metadata.get("field_name", field_name)}[{obj_param_metadata.get("field_name", obj_field.name)}]'].append(
+                        _val_to_string(val))
             else:
                 params[
                     f'{metadata.get("field_name", field_name)}[{obj_param_metadata.get("field_name", obj_field.name)}]'] = [
@@ -357,7 +360,8 @@ def serialize_request_body(request: dataclass) -> Tuple[str, any, any]:
 
     if request_metadata is not None:
         # single request
-        return serialize_content_type('request', request_metadata.get('media_type', 'application/octet-stream'), request_val)
+        return serialize_content_type('request', request_metadata.get('media_type', 'application/octet-stream'),
+                                      request_val)
 
     request_fields: Tuple[Field, ...] = fields(request_val)
     for field in request_fields:
@@ -443,7 +447,7 @@ def serialize_multipart_form(media_type: str, request: dataclass) -> Tuple[str, 
 
 
 def serialize_dict(original: dict, explode: bool, field_name, existing: Optional[dict[str, list[str]]]) -> dict[
-        str, list[str]]:
+    str, list[str]]:
     if existing is None:
         existing = []
 
@@ -646,6 +650,13 @@ def marshal_json(val):
     return json.dumps(json_dict["res"])
 
 
+content_type_patterns = {
+    "application/json": r"application\/.*?\+json;?(.*)?",
+    "application/x-www-form-urlencoded": r"(application|*)\/(x-www-form-urlencoded|*)",
+    "multipart/form-data": r"(multipart|*)\/(form-data|*)"
+}
+
+
 def match_content_type(content_type: str, pattern: str) -> boolean:
     if pattern in (content_type, "*", "*/*"):
         return True
@@ -657,10 +668,9 @@ def match_content_type(content_type: str, pattern: str) -> boolean:
     if media_type == pattern:
         return True
 
-    parts = media_type.split("/")
-    if len(parts) == 2:
-        if pattern in (f'{parts[0]}/*', f'*/{parts[1]}'):
-            return True
+    regex = re.compile(content_type_patterns[pattern])
+    if regex.fullmatch(content_type) is not None:
+        return True
 
     return False
 

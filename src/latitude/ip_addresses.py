@@ -74,11 +74,7 @@ class IPAddresses:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.IPAddresses])
                 res.ip_addresses = out
-        elif http_res.status_code == 404:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
-                res.error_object = out
-        elif http_res.status_code == 422:
+        elif http_res.status_code in [404, 422]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
