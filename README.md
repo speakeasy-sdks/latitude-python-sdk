@@ -7,8 +7,6 @@
 
 The Latitude.sh API gives you programmatic access to all resources available on the platform. With full control over the entire Latitude.sh platform, you can build integrations, custom dashboards, and manage your servers from your own clients.
 
-***Please note that the following installation example with pip is illustrative and will not download a package until a publishing token is provided as a github secret. To test out the repo you may clone it locally and run `pip install -e ../path/to/local/clone/` .***
-
 <!-- Start SDK Installation -->
 ## SDK Installation
 
