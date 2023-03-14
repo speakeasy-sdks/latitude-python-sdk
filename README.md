@@ -14,6 +14,9 @@ The Latitude.sh API gives you programmatic access to all resources available on 
 pip install latitude-python-sdk
 ```
 <!-- End SDK Installation -->
+
+[![Run on Repl.it](https://repl.it/badge/github/speakeasy-sdks/latitude-python-sdk)](https://replit.com/join/gqxljlgmmq-sagarbatchu1)
+
 ## Authentication
 
 To create an API token, go to the Settings & Billing → API Keys page on the dashboard.
