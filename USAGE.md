@@ -5,18 +5,18 @@ from latitude.models import operations, shared
 
 s = latitude.Latitude()
    
-req = operations.DeleteAPIKeyRequest(
-    security=operations.DeleteAPIKeySecurity(
+req = operations.GetRegionRequest(
+    security=operations.GetRegionSecurity(
         bearer="YOUR_API_KEY_HERE",
     ),
-    path_params=operations.DeleteAPIKeyPathParams(
+    path_params=operations.GetRegionPathParams(
         id="unde",
     ),
 )
     
-res = s.api_keys.delete_api_key(req)
+res = s.regions.get_region(req)
 
-if res.status_code == 200:
+if res.region is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
