@@ -35,9 +35,7 @@ class Members:
 
         res = operations.DestroyTeamMemberResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code == 200:
-            pass
-        elif http_res.status_code == 403:
+        if http_res.status_code in [200, 403]:
             pass
         elif http_res.status_code == 404:
             if utils.match_content_type(content_type, 'application/json'):
@@ -93,11 +91,7 @@ class Members:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Membership])
                 res.membership = out
-        elif http_res.status_code == 403:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
-                res.error_object = out
-        elif http_res.status_code == 422:
+        elif http_res.status_code in [403, 422]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out

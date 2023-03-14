@@ -62,22 +62,14 @@ class DeployConfig:
 
         res = operations.UpdateServerDeployConfigResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code == 200:
+        if http_res.status_code in [200, 422]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.DeployConfig])
                 res.deploy_config = out
-        elif http_res.status_code == 403:
+        elif http_res.status_code in [403, 406]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
                 res.error_object = out
-        elif http_res.status_code == 406:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorObject])
-                res.error_object = out
-        elif http_res.status_code == 422:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.DeployConfig])
-                res.deploy_config = out
 
         return res
 
