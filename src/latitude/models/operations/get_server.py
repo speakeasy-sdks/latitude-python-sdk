@@ -11,19 +11,9 @@ class GetServerSecurity:
     
 
 @dataclasses.dataclass
-class GetServerPathParams:
-    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetServerQueryParams:
-    extra_fields_servers: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[servers]', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
 class GetServerRequest:
-    path_params: GetServerPathParams = dataclasses.field()
-    query_params: GetServerQueryParams = dataclasses.field()
+    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
+    extra_fields_servers: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[servers]', 'style': 'form', 'explode': True }})
     
 
 @dataclasses.dataclass

@@ -13,19 +13,9 @@ class GetProjectSecurity:
     
 
 @dataclasses.dataclass
-class GetProjectPathParams:
-    id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id_or_slug', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetProjectQueryParams:
-    extra_fields_projects: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[projects]', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
 class GetProjectRequest:
-    path_params: GetProjectPathParams = dataclasses.field()
-    query_params: GetProjectQueryParams = dataclasses.field()
+    id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id_or_slug', 'style': 'simple', 'explode': False }})
+    extra_fields_projects: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[projects]', 'style': 'form', 'explode': True }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

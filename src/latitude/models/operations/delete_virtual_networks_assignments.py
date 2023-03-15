@@ -11,13 +11,8 @@ class DeleteVirtualNetworksAssignmentsSecurity:
     
 
 @dataclasses.dataclass
-class DeleteVirtualNetworksAssignmentsPathParams:
-    assignment_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'assignment_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class DeleteVirtualNetworksAssignmentsRequest:
-    path_params: DeleteVirtualNetworksAssignmentsPathParams = dataclasses.field()
+    assignment_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'assignment_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

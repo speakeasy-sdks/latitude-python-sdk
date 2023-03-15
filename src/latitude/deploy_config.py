@@ -25,7 +25,7 @@ class DeployConfig:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/servers/{server_id}/deploy_config', request.path_params)
+        url = utils.generate_url(operations.GetServerDeployConfigRequest, base_url, '/servers/{server_id}/deploy_config', request)
         
         
         client = utils.configure_security_client(self._client, security)
@@ -48,10 +48,10 @@ class DeployConfig:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/servers/{server_id}/deploy_config', request.path_params)
+        url = utils.generate_url(operations.UpdateServerDeployConfigRequest, base_url, '/servers/{server_id}/deploy_config', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

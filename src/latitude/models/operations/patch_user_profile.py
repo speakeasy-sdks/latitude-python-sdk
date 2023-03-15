@@ -13,11 +13,6 @@ from typing import Optional
 class PatchUserProfileSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
-
-@dataclasses.dataclass
-class PatchUserProfilePathParams:
-    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
-    
 class PatchUserProfileRequestBodyDataAttributesRoleEnum(str, Enum):
     ADMINISTRATOR = "administrator"
     BILLING = "billing"
@@ -53,8 +48,8 @@ class PatchUserProfileRequestBody:
 
 @dataclasses.dataclass
 class PatchUserProfileRequest:
-    path_params: PatchUserProfilePathParams = dataclasses.field()
-    request: Optional[PatchUserProfileRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
+    request_body: Optional[PatchUserProfileRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

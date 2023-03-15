@@ -13,13 +13,8 @@ class GetVirtualNetworkSecurity:
     
 
 @dataclasses.dataclass
-class GetVirtualNetworkPathParams:
-    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetVirtualNetworkRequest:
-    path_params: GetVirtualNetworkPathParams = dataclasses.field()
+    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

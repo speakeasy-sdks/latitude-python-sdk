@@ -27,7 +27,7 @@ class UserData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/projects/{project_id_or_slug}/user_data/{user_data_id}', request.path_params)
+        url = utils.generate_url(operations.DeleteProjectUserDataRequest, base_url, '/projects/{project_id_or_slug}/user_data/{user_data_id}', request)
         
         
         client = utils.configure_security_client(self._client, security)
@@ -50,9 +50,9 @@ class UserData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/projects/{project_id_or_slug}/user_data/{user_data_id}', request.path_params)
+        url = utils.generate_url(operations.GetProjectUserDataRequest, base_url, '/projects/{project_id_or_slug}/user_data/{user_data_id}', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetProjectUserDataRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         
@@ -76,9 +76,9 @@ class UserData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/projects/{project_id_or_slug}/user_data', request.path_params)
+        url = utils.generate_url(operations.GetProjectUsersDataRequest, base_url, '/projects/{project_id_or_slug}/user_data', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetProjectUsersDataRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         
@@ -102,10 +102,10 @@ class UserData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/projects/{project_id_or_slug}/user_data', request.path_params)
+        url = utils.generate_url(operations.PostProjectUserDataRequest, base_url, '/projects/{project_id_or_slug}/user_data', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -133,10 +133,10 @@ class UserData:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/projects/{project_id_or_slug}/user_data/{user_data_id}', request.path_params)
+        url = utils.generate_url(operations.PutProjectUserDataRequest, base_url, '/projects/{project_id_or_slug}/user_data/{user_data_id}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

@@ -28,13 +28,8 @@ class GetVpnSessionsFilterSiteEnum(str, Enum):
 
 
 @dataclasses.dataclass
-class GetVpnSessionsQueryParams:
-    filter_site: Optional[GetVpnSessionsFilterSiteEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[site]', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
 class GetVpnSessionsRequest:
-    query_params: GetVpnSessionsQueryParams = dataclasses.field()
+    filter_site: Optional[GetVpnSessionsFilterSiteEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[site]', 'style': 'form', 'explode': True }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

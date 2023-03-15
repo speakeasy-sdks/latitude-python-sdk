@@ -19,7 +19,7 @@ class Servers:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_server(self, request: operations.CreateServerRequest, security: operations.CreateServerSecurity) -> operations.CreateServerResponse:
+    def create_server(self, request: operations.CreateServerRequestBody, security: operations.CreateServerSecurity) -> operations.CreateServerResponse:
         r"""Deploy a new server
         """
         
@@ -28,7 +28,7 @@ class Servers:
         url = base_url.removesuffix('/') + '/servers'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -56,7 +56,7 @@ class Servers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/servers/{server_id}', request.path_params)
+        url = utils.generate_url(operations.DestroyServerRequest, base_url, '/servers/{server_id}', request)
         
         
         client = utils.configure_security_client(self._client, security)
@@ -83,9 +83,9 @@ class Servers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/servers/{server_id}', request.path_params)
+        url = utils.generate_url(operations.GetServerRequest, base_url, '/servers/{server_id}', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetServerRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         
@@ -111,7 +111,7 @@ class Servers:
         
         url = base_url.removesuffix('/') + '/servers'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetServersRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         
@@ -133,10 +133,10 @@ class Servers:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/servers/{server_id}', request.path_params)
+        url = utils.generate_url(operations.UpdateServerRequest, base_url, '/servers/{server_id}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

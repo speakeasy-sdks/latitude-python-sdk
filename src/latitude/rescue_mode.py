@@ -26,7 +26,7 @@ class RescueMode:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/servers/{server_id}/exit_rescue_mode', request.path_params)
+        url = utils.generate_url(operations.ServerExitRescueModeRequest, base_url, '/servers/{server_id}/exit_rescue_mode', request)
         
         
         client = utils.configure_security_client(self._client, security)
@@ -54,7 +54,7 @@ class RescueMode:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/servers/{server_id}/rescue_mode', request.path_params)
+        url = utils.generate_url(operations.ServerStartRescueModeRequest, base_url, '/servers/{server_id}/rescue_mode', request)
         
         
         client = utils.configure_security_client(self._client, security)

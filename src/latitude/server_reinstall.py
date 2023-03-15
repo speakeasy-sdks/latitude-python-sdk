@@ -25,10 +25,10 @@ class ServerReinstall:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/servers/{server_id}/reinstall', request.path_params)
+        url = utils.generate_url(operations.CreateServerReinstallRequest, base_url, '/servers/{server_id}/reinstall', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

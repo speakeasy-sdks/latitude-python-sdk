@@ -11,14 +11,9 @@ class GetVirtualNetworksSecurity:
     
 
 @dataclasses.dataclass
-class GetVirtualNetworksQueryParams:
+class GetVirtualNetworksRequest:
     filter_project: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[project]', 'style': 'form', 'explode': True }})
     filter_site: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[site]', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetVirtualNetworksRequest:
-    query_params: GetVirtualNetworksQueryParams = dataclasses.field()
     
 
 @dataclasses.dataclass

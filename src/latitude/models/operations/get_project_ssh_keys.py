@@ -11,19 +11,9 @@ class GetProjectSSHKeysSecurity:
     
 
 @dataclasses.dataclass
-class GetProjectSSHKeysPathParams:
-    project_id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'project_id_or_slug', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetProjectSSHKeysQueryParams:
-    include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
 class GetProjectSSHKeysRequest:
-    path_params: GetProjectSSHKeysPathParams = dataclasses.field()
-    query_params: GetProjectSSHKeysQueryParams = dataclasses.field()
+    project_id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'project_id_or_slug', 'style': 'simple', 'explode': False }})
+    include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
     
 
 @dataclasses.dataclass

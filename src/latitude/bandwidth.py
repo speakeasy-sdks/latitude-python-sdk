@@ -27,7 +27,7 @@ class Bandwidth:
         
         url = base_url.removesuffix('/') + '/traffic'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetTrafficConsumptionRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         
@@ -51,7 +51,7 @@ class Bandwidth:
         
         url = base_url.removesuffix('/') + '/traffic/quota'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetTrafficQuotaRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         

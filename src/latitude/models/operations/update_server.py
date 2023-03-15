@@ -13,11 +13,6 @@ class UpdateServerSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
 
-@dataclasses.dataclass
-class UpdateServerPathParams:
-    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateServerRequestBodyAttributes:
@@ -37,8 +32,8 @@ class UpdateServerRequestBody:
 
 @dataclasses.dataclass
 class UpdateServerRequest:
-    path_params: UpdateServerPathParams = dataclasses.field()
-    request: Optional[UpdateServerRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
+    request_body: Optional[UpdateServerRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass

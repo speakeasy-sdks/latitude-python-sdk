@@ -35,11 +35,6 @@ class UpdateCurrentVersionRequestBody:
     
 
 @dataclasses.dataclass
-class UpdateCurrentVersionRequest:
-    request: Optional[UpdateCurrentVersionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    
-
-@dataclasses.dataclass
 class UpdateCurrentVersionResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()

@@ -27,7 +27,7 @@ class APIKeys:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/auth/api_keys/{id}', request.path_params)
+        url = utils.generate_url(operations.DeleteAPIKeyRequest, base_url, '/auth/api_keys/{id}', request)
         
         
         client = utils.configure_security_client(self._client, security)
@@ -71,7 +71,7 @@ class APIKeys:
 
         return res
 
-    def post_api_key(self, request: operations.PostAPIKeyRequest, security: operations.PostAPIKeySecurity) -> operations.PostAPIKeyResponse:
+    def post_api_key(self, request: shared.CreateAPIKey, security: operations.PostAPIKeySecurity) -> operations.PostAPIKeyResponse:
         r"""Create an API Key
         Create a new API Key that is tied to the current user account. The created API key is only listed ONCE upon creation. It can however be regenerated or deleted.
         
@@ -82,7 +82,7 @@ class APIKeys:
         url = base_url.removesuffix('/') + '/auth/api_keys'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -112,10 +112,10 @@ class APIKeys:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/auth/api_keys/{id}', request.path_params)
+        url = utils.generate_url(operations.UpdateAPIKeyRequest, base_url, '/auth/api_keys/{id}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "update_api_key", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

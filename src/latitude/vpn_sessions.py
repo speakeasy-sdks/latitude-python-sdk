@@ -27,7 +27,7 @@ class VPNSessions:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/vpn_sessions/{vpn_session_id}', request.path_params)
+        url = utils.generate_url(operations.DeleteVpnSessionRequest, base_url, '/vpn_sessions/{vpn_session_id}', request)
         
         
         client = utils.configure_security_client(self._client, security)
@@ -54,7 +54,7 @@ class VPNSessions:
         
         url = base_url.removesuffix('/') + '/vpn_sessions'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetVpnSessionsRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         
@@ -72,7 +72,7 @@ class VPNSessions:
 
         return res
 
-    def post_vpn_session(self, request: operations.PostVpnSessionRequest, security: operations.PostVpnSessionSecurity) -> operations.PostVpnSessionResponse:
+    def post_vpn_session(self, request: operations.PostVpnSessionRequestBody, security: operations.PostVpnSessionSecurity) -> operations.PostVpnSessionResponse:
         r"""Create a VPN Session
         Creates a new VPN Session.
         `NOTE:` The VPN credentials are only listed ONCE upon creation. They can however be refreshed or deleted.
@@ -84,7 +84,7 @@ class VPNSessions:
         url = base_url.removesuffix('/') + '/vpn_sessions'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -112,7 +112,7 @@ class VPNSessions:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/vpn_sessions/{vpn_session_id}/refresh_password', request.path_params)
+        url = utils.generate_url(operations.PutVpnSessionRequest, base_url, '/vpn_sessions/{vpn_session_id}/refresh_password', request)
         
         
         client = utils.configure_security_client(self._client, security)

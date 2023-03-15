@@ -11,13 +11,8 @@ class DeleteVpnSessionSecurity:
     
 
 @dataclasses.dataclass
-class DeleteVpnSessionPathParams:
-    vpn_session_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'vpn_session_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class DeleteVpnSessionRequest:
-    path_params: DeleteVpnSessionPathParams = dataclasses.field()
+    vpn_session_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'vpn_session_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

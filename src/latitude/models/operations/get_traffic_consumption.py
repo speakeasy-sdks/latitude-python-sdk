@@ -11,16 +11,11 @@ class GetTrafficConsumptionSecurity:
     
 
 @dataclasses.dataclass
-class GetTrafficConsumptionQueryParams:
+class GetTrafficConsumptionRequest:
     filter_from_date: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[from_date]', 'style': 'form', 'explode': True }})
     filter_project: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[project]', 'style': 'form', 'explode': True }})
     filter_server: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[server]', 'style': 'form', 'explode': True }})
     filter_to_date: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[to_date]', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetTrafficConsumptionRequest:
-    query_params: GetTrafficConsumptionQueryParams = dataclasses.field()
     
 
 @dataclasses.dataclass

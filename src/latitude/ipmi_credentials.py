@@ -30,7 +30,7 @@ class IPMICredentials:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/servers/{id}/remote_access', request.path_params)
+        url = utils.generate_url(operations.CreateIpmiSessionRequest, base_url, '/servers/{id}/remote_access', request)
         
         
         client = utils.configure_security_client(self._client, security)

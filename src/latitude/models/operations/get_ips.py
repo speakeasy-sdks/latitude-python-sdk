@@ -21,7 +21,7 @@ class GetIpsFilterTypeEnum(str, Enum):
 
 
 @dataclasses.dataclass
-class GetIpsQueryParams:
+class GetIpsRequest:
     extra_fields_ip_addresses: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[ip_addresses]', 'style': 'form', 'explode': True }})
     filter_address: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[address]', 'style': 'form', 'explode': True }})
     filter_family: Optional[GetIpsFilterFamilyEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[family]', 'style': 'form', 'explode': True }})
@@ -30,11 +30,6 @@ class GetIpsQueryParams:
     filter_server: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[server]', 'style': 'form', 'explode': True }})
     filter_type: Optional[GetIpsFilterTypeEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[type]', 'style': 'form', 'explode': True }})
     include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetIpsRequest:
-    query_params: GetIpsQueryParams = dataclasses.field()
     
 
 @dataclasses.dataclass

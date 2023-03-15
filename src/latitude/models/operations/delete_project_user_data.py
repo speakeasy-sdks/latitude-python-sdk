@@ -10,14 +10,9 @@ class DeleteProjectUserDataSecurity:
     
 
 @dataclasses.dataclass
-class DeleteProjectUserDataPathParams:
+class DeleteProjectUserDataRequest:
     project_id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'project_id_or_slug', 'style': 'simple', 'explode': False }})
     user_data_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'user_data_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class DeleteProjectUserDataRequest:
-    path_params: DeleteProjectUserDataPathParams = dataclasses.field()
     
 
 @dataclasses.dataclass

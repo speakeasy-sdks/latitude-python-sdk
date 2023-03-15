@@ -12,13 +12,8 @@ class GetRegionSecurity:
     
 
 @dataclasses.dataclass
-class GetRegionPathParams:
-    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetRegionRequest:
-    path_params: GetRegionPathParams = dataclasses.field()
+    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

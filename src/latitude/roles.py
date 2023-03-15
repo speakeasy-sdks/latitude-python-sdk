@@ -25,7 +25,7 @@ class Roles:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/roles/{id}', request.path_params)
+        url = utils.generate_url(operations.GetRoleIDRequest, base_url, '/roles/{id}', request)
         
         
         client = utils.configure_security_client(self._client, security)

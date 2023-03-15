@@ -14,11 +14,6 @@ class PatchCurrentTeamSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
 
-@dataclasses.dataclass
-class PatchCurrentTeamPathParams:
-    team_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'team_id', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PatchCurrentTeamRequestBodyDataAttributes:
@@ -46,8 +41,8 @@ class PatchCurrentTeamRequestBody:
 
 @dataclasses.dataclass
 class PatchCurrentTeamRequest:
-    path_params: PatchCurrentTeamPathParams = dataclasses.field()
-    request: Optional[PatchCurrentTeamRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    team_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'team_id', 'style': 'simple', 'explode': False }})
+    request_body: Optional[PatchCurrentTeamRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -26,9 +26,9 @@ class IPAddresses:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/ips/{id}', request.path_params)
+        url = utils.generate_url(operations.GetIPRequest, base_url, '/ips/{id}', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetIPRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         
@@ -61,7 +61,7 @@ class IPAddresses:
         
         url = base_url.removesuffix('/') + '/ips'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetIpsRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         

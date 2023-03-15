@@ -44,7 +44,7 @@ class BandwidthPackages:
 
         return res
 
-    def update_plans_bandwidth(self, request: operations.UpdatePlansBandwidthRequest, security: operations.UpdatePlansBandwidthSecurity) -> operations.UpdatePlansBandwidthResponse:
+    def update_plans_bandwidth(self, request: operations.UpdatePlansBandwidthRequestBody, security: operations.UpdatePlansBandwidthSecurity) -> operations.UpdatePlansBandwidthResponse:
         r"""Buy or remove bandwidth packages
         Allow to increase or decrease bandwidth packages. Only admins and owners can request.
         
@@ -55,7 +55,7 @@ class BandwidthPackages:
         url = base_url.removesuffix('/') + '/plans/bandwidth'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

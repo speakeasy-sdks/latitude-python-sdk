@@ -12,13 +12,8 @@ class ServerExitRescueModeSecurity:
     
 
 @dataclasses.dataclass
-class ServerExitRescueModePathParams:
-    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class ServerExitRescueModeRequest:
-    path_params: ServerExitRescueModePathParams = dataclasses.field()
+    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

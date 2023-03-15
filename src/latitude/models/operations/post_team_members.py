@@ -46,11 +46,6 @@ class PostTeamMembersRequestBody:
     
 
 @dataclasses.dataclass
-class PostTeamMembersRequest:
-    request: Optional[PostTeamMembersRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    
-
-@dataclasses.dataclass
 class PostTeamMembersResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()

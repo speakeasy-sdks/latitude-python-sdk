@@ -38,11 +38,6 @@ class AssignServerVirtualNetworkRequestBody:
     
 
 @dataclasses.dataclass
-class AssignServerVirtualNetworkRequest:
-    request: Optional[AssignServerVirtualNetworkRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    
-
-@dataclasses.dataclass
 class AssignServerVirtualNetworkResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()

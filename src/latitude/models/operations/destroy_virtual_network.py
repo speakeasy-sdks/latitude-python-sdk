@@ -12,13 +12,8 @@ class DestroyVirtualNetworkSecurity:
     
 
 @dataclasses.dataclass
-class DestroyVirtualNetworkPathParams:
-    id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class DestroyVirtualNetworkRequest:
-    path_params: DestroyVirtualNetworkPathParams = dataclasses.field()
+    id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

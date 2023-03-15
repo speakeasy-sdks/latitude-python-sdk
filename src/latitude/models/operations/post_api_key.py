@@ -2,7 +2,6 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import api_key as shared_api_key
-from ..shared import create_api_key as shared_create_api_key
 from ..shared import error_object as shared_error_object
 from dataclasses_json import Undefined, dataclass_json
 from latitude import utils
@@ -12,11 +11,6 @@ from typing import Optional
 @dataclasses.dataclass
 class PostAPIKeySecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
-    
-
-@dataclasses.dataclass
-class PostAPIKeyRequest:
-    request: Optional[shared_create_api_key.CreateAPIKey] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

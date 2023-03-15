@@ -41,7 +41,7 @@ class APIVersion:
 
         return res
 
-    def update_current_version(self, request: operations.UpdateCurrentVersionRequest, security: operations.UpdateCurrentVersionSecurity) -> operations.UpdateCurrentVersionResponse:
+    def update_current_version(self, request: operations.UpdateCurrentVersionRequestBody, security: operations.UpdateCurrentVersionSecurity) -> operations.UpdateCurrentVersionResponse:
         r"""Update current API version
         Update current Api Version.
                 Latest Version: 2022-07-18 Supported Versions: [2022-07-18]
@@ -52,7 +52,7 @@ class APIVersion:
         url = base_url.removesuffix('/') + '/auth/update_version'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

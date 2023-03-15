@@ -15,14 +15,9 @@ class UpdateAPIKeySecurity:
     
 
 @dataclasses.dataclass
-class UpdateAPIKeyPathParams:
-    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class UpdateAPIKeyRequest:
-    path_params: UpdateAPIKeyPathParams = dataclasses.field()
-    request: Optional[shared_update_api_key.UpdateAPIKey] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
+    update_api_key: Optional[shared_update_api_key.UpdateAPIKey] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

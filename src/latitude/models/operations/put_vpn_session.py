@@ -12,13 +12,8 @@ class PutVpnSessionSecurity:
     
 
 @dataclasses.dataclass
-class PutVpnSessionPathParams:
-    vpn_session_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'vpn_session_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class PutVpnSessionRequest:
-    path_params: PutVpnSessionPathParams = dataclasses.field()
+    vpn_session_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'vpn_session_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

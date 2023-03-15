@@ -77,10 +77,10 @@ class Account:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/user/profile/{id}', request.path_params)
+        url = utils.generate_url(operations.PatchUserProfileRequest, base_url, '/user/profile/{id}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

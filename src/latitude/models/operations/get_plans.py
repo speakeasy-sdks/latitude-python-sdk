@@ -21,17 +21,12 @@ class GetPlansFilterStockLevelEnum(str, Enum):
 
 
 @dataclasses.dataclass
-class GetPlansQueryParams:
+class GetPlansRequest:
     filter_in_stock: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[in_stock]', 'style': 'form', 'explode': True }})
     filter_location: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[location]', 'style': 'form', 'explode': True }})
     filter_name: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[name]', 'style': 'form', 'explode': True }})
     filter_slug: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[slug]', 'style': 'form', 'explode': True }})
     filter_stock_level: Optional[GetPlansFilterStockLevelEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[stock_level]', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetPlansRequest:
-    query_params: GetPlansQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

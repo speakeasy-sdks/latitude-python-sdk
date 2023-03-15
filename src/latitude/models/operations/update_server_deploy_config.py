@@ -13,11 +13,6 @@ from typing import Optional
 class UpdateServerDeployConfigSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
-
-@dataclasses.dataclass
-class UpdateServerDeployConfigPathParams:
-    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
-    
 class UpdateServerDeployConfigRequestBodyAttributesOperatingSystemEnum(str, Enum):
     WINDOWS_SERVER_2019_STD_V1 = "windows_server_2019_std_v1"
     WINDOWS_SERVER_2019_DC_V1 = "windows_server_2019_dc_v1"
@@ -63,8 +58,8 @@ class UpdateServerDeployConfigRequestBody:
 
 @dataclasses.dataclass
 class UpdateServerDeployConfigRequest:
-    path_params: UpdateServerDeployConfigPathParams = dataclasses.field()
-    request: Optional[UpdateServerDeployConfigRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
+    request_body: Optional[UpdateServerDeployConfigRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass

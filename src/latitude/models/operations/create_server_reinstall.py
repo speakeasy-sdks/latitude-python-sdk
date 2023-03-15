@@ -12,11 +12,6 @@ from typing import Optional
 class CreateServerReinstallSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
-
-@dataclasses.dataclass
-class CreateServerReinstallPathParams:
-    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
-    
 class CreateServerReinstallRequestBodyDataAttributesOperatingSystemEnum(str, Enum):
     WINDOWS_SERVER_2019_STD_V1 = "windows_server_2019_std_v1"
     WINDOWS_SERVER_2019_DC_V1 = "windows_server_2019_dc_v1"
@@ -62,8 +57,8 @@ class CreateServerReinstallRequestBody:
 
 @dataclasses.dataclass
 class CreateServerReinstallRequest:
-    path_params: CreateServerReinstallPathParams = dataclasses.field()
-    request: Optional[CreateServerReinstallRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
+    request_body: Optional[CreateServerReinstallRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass

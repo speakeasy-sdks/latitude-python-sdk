@@ -11,16 +11,11 @@ class GetVirtualNetworksAssignmentsSecurity:
     
 
 @dataclasses.dataclass
-class GetVirtualNetworksAssignmentsQueryParams:
+class GetVirtualNetworksAssignmentsRequest:
     filter_server: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[server]', 'style': 'form', 'explode': True }})
     filter_vid: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[vid]', 'style': 'form', 'explode': True }})
     filter_virtual_network_id: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[virtual_network_id]', 'style': 'form', 'explode': True }})
     include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetVirtualNetworksAssignmentsRequest:
-    query_params: GetVirtualNetworksAssignmentsQueryParams = dataclasses.field()
     
 
 @dataclasses.dataclass

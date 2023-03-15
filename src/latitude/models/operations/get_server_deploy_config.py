@@ -11,13 +11,8 @@ class GetServerDeployConfigSecurity:
     
 
 @dataclasses.dataclass
-class GetServerDeployConfigPathParams:
-    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetServerDeployConfigRequest:
-    path_params: GetServerDeployConfigPathParams = dataclasses.field()
+    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

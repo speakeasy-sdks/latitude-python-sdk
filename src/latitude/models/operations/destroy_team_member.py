@@ -11,13 +11,8 @@ class DestroyTeamMemberSecurity:
     
 
 @dataclasses.dataclass
-class DestroyTeamMemberPathParams:
-    user_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'user_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class DestroyTeamMemberRequest:
-    path_params: DestroyTeamMemberPathParams = dataclasses.field()
+    user_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'user_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

@@ -19,7 +19,7 @@ class Projects:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_project(self, request: operations.CreateProjectRequest, security: operations.CreateProjectSecurity) -> operations.CreateProjectResponse:
+    def create_project(self, request: operations.CreateProjectRequestBody, security: operations.CreateProjectSecurity) -> operations.CreateProjectResponse:
         r"""Create a Project
         """
         
@@ -28,7 +28,7 @@ class Projects:
         url = base_url.removesuffix('/') + '/projects'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -56,7 +56,7 @@ class Projects:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/projects/{id_or_slug}', request.path_params)
+        url = utils.generate_url(operations.DeleteProjectRequest, base_url, '/projects/{id_or_slug}', request)
         
         
         client = utils.configure_security_client(self._client, security)
@@ -83,9 +83,9 @@ class Projects:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/projects/{id_or_slug}', request.path_params)
+        url = utils.generate_url(operations.GetProjectRequest, base_url, '/projects/{id_or_slug}', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetProjectRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         
@@ -111,7 +111,7 @@ class Projects:
         
         url = base_url.removesuffix('/') + '/projects'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetProjectsRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         
@@ -133,10 +133,10 @@ class Projects:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/projects/{id_or_slug}', request.path_params)
+        url = utils.generate_url(operations.UpdateProjectRequest, base_url, '/projects/{id_or_slug}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

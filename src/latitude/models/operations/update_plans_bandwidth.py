@@ -39,11 +39,6 @@ class UpdatePlansBandwidthRequestBody:
     
 
 @dataclasses.dataclass
-class UpdatePlansBandwidthRequest:
-    request: Optional[UpdatePlansBandwidthRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    
-
-@dataclasses.dataclass
 class UpdatePlansBandwidthResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()

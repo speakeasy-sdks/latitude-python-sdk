@@ -13,11 +13,6 @@ class UpdateVirtualNetworkSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
 
-@dataclasses.dataclass
-class UpdateVirtualNetworkPathParams:
-    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UpdateVirtualNetworkRequestBodyDataAttributes:
@@ -43,8 +38,8 @@ class UpdateVirtualNetworkRequestBody:
 
 @dataclasses.dataclass
 class UpdateVirtualNetworkRequest:
-    path_params: UpdateVirtualNetworkPathParams = dataclasses.field()
-    request: Optional[UpdateVirtualNetworkRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
+    request_body: Optional[UpdateVirtualNetworkRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass

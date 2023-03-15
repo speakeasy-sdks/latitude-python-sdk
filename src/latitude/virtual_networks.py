@@ -19,7 +19,7 @@ class VirtualNetworks:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def create_virtual_network(self, request: operations.CreateVirtualNetworkRequest, security: operations.CreateVirtualNetworkSecurity) -> operations.CreateVirtualNetworkResponse:
+    def create_virtual_network(self, request: operations.CreateVirtualNetworkRequestBody, security: operations.CreateVirtualNetworkSecurity) -> operations.CreateVirtualNetworkResponse:
         r"""Create a Virtual Network
         Creates a new Virtual Network.
         
@@ -30,7 +30,7 @@ class VirtualNetworks:
         url = base_url.removesuffix('/') + '/virtual_networks'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -60,7 +60,7 @@ class VirtualNetworks:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/virtual_networks/{id}', request.path_params)
+        url = utils.generate_url(operations.DestroyVirtualNetworkRequest, base_url, '/virtual_networks/{id}', request)
         
         
         client = utils.configure_security_client(self._client, security)
@@ -89,7 +89,7 @@ class VirtualNetworks:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/virtual_networks/{id}', request.path_params)
+        url = utils.generate_url(operations.GetVirtualNetworkRequest, base_url, '/virtual_networks/{id}', request)
         
         
         client = utils.configure_security_client(self._client, security)
@@ -116,7 +116,7 @@ class VirtualNetworks:
         
         url = base_url.removesuffix('/') + '/virtual_networks'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetVirtualNetworksRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         
@@ -140,10 +140,10 @@ class VirtualNetworks:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/virtual_networks/{id}', request.path_params)
+        url = utils.generate_url(operations.UpdateVirtualNetworkRequest, base_url, '/virtual_networks/{id}', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         

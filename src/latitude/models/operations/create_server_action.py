@@ -13,11 +13,6 @@ from typing import Optional
 class CreateServerActionSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
-
-@dataclasses.dataclass
-class CreateServerActionPathParams:
-    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
-    
 class CreateServerActionRequestBodyDataAttributesActionEnum(str, Enum):
     POWER_ON = "power_on"
     POWER_OFF = "power_off"
@@ -48,8 +43,8 @@ class CreateServerActionRequestBody:
 
 @dataclasses.dataclass
 class CreateServerActionRequest:
-    path_params: CreateServerActionPathParams = dataclasses.field()
-    request: Optional[CreateServerActionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
+    request_body: Optional[CreateServerActionRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass

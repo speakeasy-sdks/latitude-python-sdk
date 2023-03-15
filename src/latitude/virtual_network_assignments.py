@@ -19,7 +19,7 @@ class VirtualNetworkAssignments:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def assign_server_virtual_network(self, request: operations.AssignServerVirtualNetworkRequest, security: operations.AssignServerVirtualNetworkSecurity) -> operations.AssignServerVirtualNetworkResponse:
+    def assign_server_virtual_network(self, request: operations.AssignServerVirtualNetworkRequestBody, security: operations.AssignServerVirtualNetworkSecurity) -> operations.AssignServerVirtualNetworkResponse:
         r"""Assign a server to a virtual network
         """
         
@@ -28,7 +28,7 @@ class VirtualNetworkAssignments:
         url = base_url.removesuffix('/') + '/virtual_networks/assignments'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -58,7 +58,7 @@ class VirtualNetworkAssignments:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/virtual_networks/assignments/{assignment_id}', request.path_params)
+        url = utils.generate_url(operations.DeleteVirtualNetworksAssignmentsRequest, base_url, '/virtual_networks/assignments/{assignment_id}', request)
         
         
         client = utils.configure_security_client(self._client, security)
@@ -87,7 +87,7 @@ class VirtualNetworkAssignments:
         
         url = base_url.removesuffix('/') + '/virtual_networks/assignments'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.GetVirtualNetworksAssignmentsRequest, request)
         
         client = utils.configure_security_client(self._client, security)
         

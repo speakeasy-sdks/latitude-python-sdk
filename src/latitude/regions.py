@@ -25,7 +25,7 @@ class Regions:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/regions/{id}', request.path_params)
+        url = utils.generate_url(operations.GetRegionRequest, base_url, '/regions/{id}', request)
         
         
         client = utils.configure_security_client(self._client, security)

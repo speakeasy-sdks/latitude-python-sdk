@@ -13,11 +13,6 @@ class PostProjectSSHKeySecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
 
-@dataclasses.dataclass
-class PostProjectSSHKeyPathParams:
-    project_id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'project_id_or_slug', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PostProjectSSHKeyRequestBodyDataAttributes:
@@ -43,8 +38,8 @@ class PostProjectSSHKeyRequestBody:
 
 @dataclasses.dataclass
 class PostProjectSSHKeyRequest:
-    path_params: PostProjectSSHKeyPathParams = dataclasses.field()
-    request: Optional[PostProjectSSHKeyRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    project_id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'project_id_or_slug', 'style': 'simple', 'explode': False }})
+    request_body: Optional[PostProjectSSHKeyRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

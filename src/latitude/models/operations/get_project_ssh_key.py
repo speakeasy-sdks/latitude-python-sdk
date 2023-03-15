@@ -13,20 +13,10 @@ class GetProjectSSHKeySecurity:
     
 
 @dataclasses.dataclass
-class GetProjectSSHKeyPathParams:
+class GetProjectSSHKeyRequest:
     project_id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'project_id_or_slug', 'style': 'simple', 'explode': False }})
     ssh_key_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'ssh_key_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetProjectSSHKeyQueryParams:
     include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetProjectSSHKeyRequest:
-    path_params: GetProjectSSHKeyPathParams = dataclasses.field()
-    query_params: GetProjectSSHKeyQueryParams = dataclasses.field()
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

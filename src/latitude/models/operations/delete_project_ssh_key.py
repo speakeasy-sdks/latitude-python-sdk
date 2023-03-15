@@ -10,14 +10,9 @@ class DeleteProjectSSHKeySecurity:
     
 
 @dataclasses.dataclass
-class DeleteProjectSSHKeyPathParams:
+class DeleteProjectSSHKeyRequest:
     project_id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'project_id_or_slug', 'style': 'simple', 'explode': False }})
     ssh_key_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'ssh_key_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class DeleteProjectSSHKeyRequest:
-    path_params: DeleteProjectSSHKeyPathParams = dataclasses.field()
     
 
 @dataclasses.dataclass

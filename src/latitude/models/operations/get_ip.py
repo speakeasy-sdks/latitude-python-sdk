@@ -12,20 +12,10 @@ class GetIPSecurity:
     
 
 @dataclasses.dataclass
-class GetIPPathParams:
+class GetIPRequest:
     id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetIPQueryParams:
     extra_fields_ip_addresses: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[ip_addresses]', 'style': 'form', 'explode': True }})
     include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetIPRequest:
-    path_params: GetIPPathParams = dataclasses.field()
-    query_params: GetIPQueryParams = dataclasses.field()
     
 
 @dataclasses.dataclass

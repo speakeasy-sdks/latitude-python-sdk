@@ -12,13 +12,8 @@ class GetTrafficQuotaSecurity:
     
 
 @dataclasses.dataclass
-class GetTrafficQuotaQueryParams:
-    filter_project: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[project]', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
 class GetTrafficQuotaRequest:
-    query_params: GetTrafficQuotaQueryParams = dataclasses.field()
+    filter_project: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[project]', 'style': 'form', 'explode': True }})
     
 
 @dataclasses.dataclass

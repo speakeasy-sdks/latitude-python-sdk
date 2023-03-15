@@ -13,11 +13,6 @@ from typing import Optional
 class UpdateProjectSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
-
-@dataclasses.dataclass
-class UpdateProjectPathParams:
-    id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id_or_slug', 'style': 'simple', 'explode': False }})
-    
 class UpdateProjectRequestBodyDataAttributesEnvironmentEnum(str, Enum):
     DEVELOPMENT = "Development"
     STAGING = "Staging"
@@ -52,8 +47,8 @@ class UpdateProjectRequestBody:
 
 @dataclasses.dataclass
 class UpdateProjectRequest:
-    path_params: UpdateProjectPathParams = dataclasses.field()
-    request: Optional[UpdateProjectRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id_or_slug', 'style': 'simple', 'explode': False }})
+    request_body: Optional[UpdateProjectRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

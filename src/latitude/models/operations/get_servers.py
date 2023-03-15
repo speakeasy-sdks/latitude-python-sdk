@@ -11,7 +11,7 @@ class GetServersSecurity:
     
 
 @dataclasses.dataclass
-class GetServersQueryParams:
+class GetServersRequest:
     extra_fields_servers: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[servers]', 'style': 'form', 'explode': True }})
     filter_created_at_gte: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[created_at_gte]', 'style': 'form', 'explode': True }})
     filter_created_at_lte: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[created_at_lte]', 'style': 'form', 'explode': True }})
@@ -22,11 +22,6 @@ class GetServersQueryParams:
     filter_project: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[project]', 'style': 'form', 'explode': True }})
     filter_region: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[region]', 'style': 'form', 'explode': True }})
     filter_status: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[status]', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetServersRequest:
-    query_params: GetServersQueryParams = dataclasses.field()
     
 
 @dataclasses.dataclass

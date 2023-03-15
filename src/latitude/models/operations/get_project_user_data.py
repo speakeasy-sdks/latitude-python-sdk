@@ -11,21 +11,11 @@ class GetProjectUserDataSecurity:
     
 
 @dataclasses.dataclass
-class GetProjectUserDataPathParams:
+class GetProjectUserDataRequest:
     project_id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'project_id_or_slug', 'style': 'simple', 'explode': False }})
     user_data_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'user_data_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class GetProjectUserDataQueryParams:
     extra_fields_user_data: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[user_data]', 'style': 'form', 'explode': True }})
     include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetProjectUserDataRequest:
-    path_params: GetProjectUserDataPathParams = dataclasses.field()
-    query_params: GetProjectUserDataQueryParams = dataclasses.field()
     
 
 @dataclasses.dataclass

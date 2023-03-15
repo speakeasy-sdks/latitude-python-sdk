@@ -11,13 +11,8 @@ class DestroyServerSecurity:
     
 
 @dataclasses.dataclass
-class DestroyServerPathParams:
-    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class DestroyServerRequest:
-    path_params: DestroyServerPathParams = dataclasses.field()
+    server_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'server_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

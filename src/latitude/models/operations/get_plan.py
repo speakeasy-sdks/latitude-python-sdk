@@ -12,13 +12,8 @@ class GetPlanSecurity:
     
 
 @dataclasses.dataclass
-class GetPlanPathParams:
-    plan_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'plan_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class GetPlanRequest:
-    path_params: GetPlanPathParams = dataclasses.field()
+    plan_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'plan_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

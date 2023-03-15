@@ -13,12 +13,6 @@ class PutProjectUserDataSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
     
 
-@dataclasses.dataclass
-class PutProjectUserDataPathParams:
-    project_id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'project_id_or_slug', 'style': 'simple', 'explode': False }})
-    user_data_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'user_data_id', 'style': 'simple', 'explode': False }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PutProjectUserDataRequestBodyDataAttributes:
@@ -45,8 +39,9 @@ class PutProjectUserDataRequestBody:
 
 @dataclasses.dataclass
 class PutProjectUserDataRequest:
-    path_params: PutProjectUserDataPathParams = dataclasses.field()
-    request: Optional[PutProjectUserDataRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    project_id_or_slug: str = dataclasses.field(metadata={'path_param': { 'field_name': 'project_id_or_slug', 'style': 'simple', 'explode': False }})
+    user_data_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'user_data_id', 'style': 'simple', 'explode': False }})
+    request_body: Optional[PutProjectUserDataRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass

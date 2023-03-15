@@ -39,11 +39,6 @@ class CreateVirtualNetworkRequestBody:
     
 
 @dataclasses.dataclass
-class CreateVirtualNetworkRequest:
-    request: Optional[CreateVirtualNetworkRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    
-
-@dataclasses.dataclass
 class CreateVirtualNetworkResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()

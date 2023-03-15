@@ -43,11 +43,6 @@ class PostTeamRequestBody:
     data: PostTeamRequestBodyData = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
 
-@dataclasses.dataclass
-class PostTeamRequest:
-    request: Optional[PostTeamRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PostTeam201ApplicationJSON:

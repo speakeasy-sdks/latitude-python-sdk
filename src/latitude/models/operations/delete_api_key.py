@@ -11,13 +11,8 @@ class DeleteAPIKeySecurity:
     
 
 @dataclasses.dataclass
-class DeleteAPIKeyPathParams:
-    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class DeleteAPIKeyRequest:
-    path_params: DeleteAPIKeyPathParams = dataclasses.field()
+    id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

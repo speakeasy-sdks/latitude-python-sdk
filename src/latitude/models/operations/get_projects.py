@@ -11,7 +11,7 @@ class GetProjectsSecurity:
     
 
 @dataclasses.dataclass
-class GetProjectsQueryParams:
+class GetProjectsRequest:
     extra_fields_projects: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'extra_fields[projects]', 'style': 'form', 'explode': True }})
     filter_billing_type: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[billing_type]', 'style': 'form', 'explode': True }})
     filter_description: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[description]', 'style': 'form', 'explode': True }})
@@ -19,11 +19,6 @@ class GetProjectsQueryParams:
     filter_name: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[name]', 'style': 'form', 'explode': True }})
     filter_slug: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'filter[slug]', 'style': 'form', 'explode': True }})
     include: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'include', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
-class GetProjectsRequest:
-    query_params: GetProjectsQueryParams = dataclasses.field()
     
 
 @dataclasses.dataclass

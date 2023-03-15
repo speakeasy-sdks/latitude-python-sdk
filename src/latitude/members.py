@@ -25,7 +25,7 @@ class Members:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/team/members/{user_id}', request.path_params)
+        url = utils.generate_url(operations.DestroyTeamMemberRequest, base_url, '/team/members/{user_id}', request)
         
         
         client = utils.configure_security_client(self._client, security)
@@ -67,7 +67,7 @@ class Members:
 
         return res
 
-    def post_team_members(self, request: operations.PostTeamMembersRequest, security: operations.PostTeamMembersSecurity) -> operations.PostTeamMembersResponse:
+    def post_team_members(self, request: operations.PostTeamMembersRequestBody, security: operations.PostTeamMembersSecurity) -> operations.PostTeamMembersResponse:
         r"""Add a Team Member
         """
         
@@ -76,7 +76,7 @@ class Members:
         url = base_url.removesuffix('/') + '/team/members'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
