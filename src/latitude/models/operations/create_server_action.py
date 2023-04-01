@@ -18,9 +18,9 @@ class CreateServerActionSecurity:
     
 class CreateServerActionRequestBodyDataAttributesActionEnum(str, Enum):
     r"""The action to perform on the server"""
-    POWER_ON = "power_on"
-    POWER_OFF = "power_off"
-    REBOOT = "reboot"
+    POWER_ON = 'power_on'
+    POWER_OFF = 'power_off'
+    REBOOT = 'reboot'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -31,7 +31,7 @@ class CreateServerActionRequestBodyDataAttributes:
     r"""The action to perform on the server"""  
     
 class CreateServerActionRequestBodyDataTypeEnum(str, Enum):
-    ACTIONS = "actions"
+    ACTIONS = 'actions'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

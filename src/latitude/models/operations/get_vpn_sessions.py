@@ -16,18 +16,18 @@ class GetVpnSessionsSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})  
     
 class GetVpnSessionsFilterSiteEnum(str, Enum):
-    MH1 = "MH1"
-    SP1 = "SP1"
-    SP4 = "SP4"
-    SYD = "SYD"
-    CH1 = "CH1"
-    DAL2 = "DAL2"
-    LA2 = "LA2"
-    MI1 = "MI1"
-    NY2 = "NY2"
-    SAN = "SAN"
-    TY6 = "TY6"
-    TY8 = "TY8"
+    MH1 = 'MH1'
+    SP1 = 'SP1'
+    SP4 = 'SP4'
+    SYD = 'SYD'
+    CH1 = 'CH1'
+    DAL2 = 'DAL2'
+    LA2 = 'LA2'
+    MI1 = 'MI1'
+    NY2 = 'NY2'
+    SAN = 'SAN'
+    TY6 = 'TY6'
+    TY8 = 'TY8'
 
 
 @dataclasses.dataclass

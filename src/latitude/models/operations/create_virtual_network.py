@@ -28,7 +28,7 @@ class CreateVirtualNetworkRequestBodyDataAttributes:
     r"""Site ID or slug"""  
     
 class CreateVirtualNetworkRequestBodyDataTypeEnum(str, Enum):
-    VIRTUAL_NETWORK = "virtual_network"
+    VIRTUAL_NETWORK = 'virtual_network'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

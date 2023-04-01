@@ -10,8 +10,8 @@ from typing import Optional
 
 class VpnSessionDataWithPasswordAttributesStatusEnum(str, Enum):
     r"""from Firewall Response"""
-    ENABLE = "enable"
-    DISABLE = "disable"
+    ENABLE = 'enable'
+    DISABLE = 'disable'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -35,7 +35,7 @@ class VpnSessionDataWithPasswordAttributes:
     r"""VPN username"""  
     
 class VpnSessionDataWithPasswordTypeEnum(str, Enum):
-    VPN_SESSIONS = "vpn_sessions"
+    VPN_SESSIONS = 'vpn_sessions'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

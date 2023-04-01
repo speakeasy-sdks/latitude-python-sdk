@@ -24,7 +24,6 @@ class UserData:
     def delete_project_user_data(self, request: operations.DeleteProjectUserDataRequest, security: operations.DeleteProjectUserDataSecurity) -> operations.DeleteProjectUserDataResponse:
         r"""Delete a Project User Data
         Allow you remove User Data in a project.
-        
         """
         base_url = self._server_url
         
@@ -38,15 +37,12 @@ class UserData:
 
         res = operations.DeleteProjectUserDataResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code in [200, 404]:
-            pass
 
         return res
 
     def get_project_user_data(self, request: operations.GetProjectUserDataRequest, security: operations.GetProjectUserDataSecurity) -> operations.GetProjectUserDataResponse:
         r"""Retrieve a Project User Data
         Get User Data in the project. These scripts can be used to configure servers with user data.
-        
         """
         base_url = self._server_url
         
@@ -71,7 +67,6 @@ class UserData:
     def get_project_users_data(self, request: operations.GetProjectUsersDataRequest, security: operations.GetProjectUsersDataSecurity) -> operations.GetProjectUsersDataResponse:
         r"""List all Project User Data
         List all Users Data in the project. These scripts can be used to configure servers with user data.
-        
         """
         base_url = self._server_url
         
@@ -96,7 +91,6 @@ class UserData:
     def post_project_user_data(self, request: operations.PostProjectUserDataRequest, security: operations.PostProjectUserDataSecurity) -> operations.PostProjectUserDataResponse:
         r"""Create a Project User Data
         Allows you to create User Data in a project, which can be used to perform custom setup on your servers after deploy and reinstall.
-        
         """
         base_url = self._server_url
         
@@ -126,7 +120,6 @@ class UserData:
     def put_project_user_data(self, request: operations.PutProjectUserDataRequest, security: operations.PutProjectUserDataSecurity) -> operations.PutProjectUserDataResponse:
         r"""Update a Project User Data
         Allow you update User Data in a project.
-        
         """
         base_url = self._server_url
         

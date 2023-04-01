@@ -9,8 +9,8 @@ from latitude import utils
 from typing import Optional
 
 class IPAddressAttributesFamilyEnum(str, Enum):
-    I_PV4 = "IPv4"
-    I_PV6 = "IPv6"
+    I_PV4 = 'IPv4'
+    I_PV6 = 'IPv6'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -41,8 +41,8 @@ class IPAddressAttributesRole:
     slug: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slug'), 'exclude': lambda f: f is None }})  
     
 class IPAddressAttributesTypeEnum(str, Enum):
-    PUBLIC = "Public"
-    PRIVATE = "Private"
+    PUBLIC = 'Public'
+    PRIVATE = 'Private'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

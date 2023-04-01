@@ -23,7 +23,7 @@ class UpdateCurrentVersionRequestBodyDataAttributes:
     r"""new api version"""  
     
 class UpdateCurrentVersionRequestBodyDataTypeEnum(str, Enum):
-    API_VERSION = "api_version"
+    API_VERSION = 'api_version'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

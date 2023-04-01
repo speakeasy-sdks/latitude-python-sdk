@@ -26,7 +26,7 @@ class PostProjectUserDataRequestBodyDataAttributes:
     r"""description of the User Data"""  
     
 class PostProjectUserDataRequestBodyDataTypeEnum(str, Enum):
-    USER_DATA = "user_data"
+    USER_DATA = 'user_data'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

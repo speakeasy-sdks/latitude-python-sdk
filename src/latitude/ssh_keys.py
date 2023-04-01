@@ -24,7 +24,6 @@ class SSHKeys:
     def delete_project_ssh_key(self, request: operations.DeleteProjectSSHKeyRequest, security: operations.DeleteProjectSSHKeySecurity) -> operations.DeleteProjectSSHKeyResponse:
         r"""Delete a Project SSH Key
         Allow you remove SSH Keys in a project. Remove a SSH Key from the project won't revoke the SSH Keys access for previously deploy and reinstall actions.
-        
         """
         base_url = self._server_url
         
@@ -38,15 +37,12 @@ class SSHKeys:
 
         res = operations.DeleteProjectSSHKeyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code in [200, 404]:
-            pass
 
         return res
 
     def get_project_ssh_key(self, request: operations.GetProjectSSHKeyRequest, security: operations.GetProjectSSHKeySecurity) -> operations.GetProjectSSHKeyResponse:
         r"""Retrieve a Project SSH Key
         List all SSH Keys in the project. These keys can be used to access servers after deploy and reinstall actions.
-        
         """
         base_url = self._server_url
         
@@ -71,7 +67,6 @@ class SSHKeys:
     def get_project_ssh_keys(self, request: operations.GetProjectSSHKeysRequest, security: operations.GetProjectSSHKeysSecurity) -> operations.GetProjectSSHKeysResponse:
         r"""List all Project SSH Keys
         List all SSH Keys in the project. These keys can be used to access servers after deploy and reinstall actions.
-        
         """
         base_url = self._server_url
         
@@ -96,7 +91,6 @@ class SSHKeys:
     def post_project_ssh_key(self, request: operations.PostProjectSSHKeyRequest, security: operations.PostProjectSSHKeySecurity) -> operations.PostProjectSSHKeyResponse:
         r"""Create a Project SSH Key
         Allow you create SSH Keys in a project. These keys can be used to access servers after deploy and reinstall actions.
-        
         """
         base_url = self._server_url
         
@@ -126,7 +120,6 @@ class SSHKeys:
     def put_project_ssh_key(self, request: operations.PutProjectSSHKeyRequest, security: operations.PutProjectSSHKeySecurity) -> operations.PutProjectSSHKeyResponse:
         r"""Update a Project SSH Key
         Allow you update SSH Key in a project. These keys can be used to access servers after deploy and reinstall actions.
-        
         """
         base_url = self._server_url
         

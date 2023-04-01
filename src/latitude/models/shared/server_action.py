@@ -15,7 +15,7 @@ class ServerActionDataAttributes:
     status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})  
     
 class ServerActionDataTypeEnum(str, Enum):
-    ACTIONS = "actions"
+    ACTIONS = 'actions'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

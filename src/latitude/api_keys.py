@@ -24,7 +24,6 @@ class APIKeys:
     def delete_api_key(self, request: operations.DeleteAPIKeyRequest, security: operations.DeleteAPIKeySecurity) -> operations.DeleteAPIKeyResponse:
         r"""Delete an API Key
         Delete an existing API Key. Once deleted, the API Key can no longer be used to access the API.
-        
         """
         base_url = self._server_url
         
@@ -47,17 +46,16 @@ class APIKeys:
 
         return res
 
-    def get_api_keys(self, security: operations.GetAPIKeysSecurity) -> operations.GetAPIKeysResponse:
+    def get_api_keys(self) -> operations.GetAPIKeysResponse:
         r"""List all API Keys
         Returns a list of all API keys for the current user
-        
         """
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/auth/api_keys'
         
         
-        client = utils.configure_security_client(self._client, security)
+        client = self._client
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
@@ -74,7 +72,6 @@ class APIKeys:
     def post_api_key(self, request: shared.CreateAPIKey, security: operations.PostAPIKeySecurity) -> operations.PostAPIKeyResponse:
         r"""Create an API Key
         Create a new API Key that is tied to the current user account. The created API key is only listed ONCE upon creation. It can however be regenerated or deleted.
-        
         """
         base_url = self._server_url
         
@@ -106,7 +103,6 @@ class APIKeys:
     def update_api_key(self, request: operations.UpdateAPIKeyRequest, security: operations.UpdateAPIKeySecurity) -> operations.UpdateAPIKeyResponse:
         r"""Regenerate an API Key
         Regenerate an existing API Key that is tied to the current user. This overrides the previous key.
-        
         """
         base_url = self._server_url
         

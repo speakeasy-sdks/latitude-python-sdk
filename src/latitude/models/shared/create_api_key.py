@@ -16,7 +16,7 @@ class CreateAPIKeyDataAttributes:
     r"""Name of the API Key"""  
     
 class CreateAPIKeyDataTypeEnum(str, Enum):
-    API_KEYS = "api_keys"
+    API_KEYS = 'api_keys'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

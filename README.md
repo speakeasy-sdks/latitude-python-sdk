@@ -33,7 +33,7 @@ s = latitude.Latitude()
 
 
 req = operations.GetRegionRequest(
-    id="unde",
+    id="corrupti",
 )
     
 res = s.regions.get_region(req, operations.GetRegionSecurity(
@@ -46,7 +46,7 @@ if res.region is not None:
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
 ### api_keys

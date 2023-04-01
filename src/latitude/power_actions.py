@@ -27,7 +27,6 @@ class PowerActions:
         - `power_on`
         - `power_off`
         - `reboot`
-        
         """
         base_url = self._server_url
         

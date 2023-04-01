@@ -20,25 +20,22 @@ class APIVersion:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_current_version(self, security: operations.GetCurrentVersionSecurity) -> operations.GetCurrentVersionResponse:
+    def get_current_version(self) -> operations.GetCurrentVersionResponse:
         r"""Get current API version
         Returns current Api Version
-        
         """
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/auth/current_version'
         
         
-        client = utils.configure_security_client(self._client, security)
+        client = self._client
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetCurrentVersionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code == 200:
-            pass
 
         return res
 
@@ -63,8 +60,6 @@ class APIVersion:
 
         res = operations.UpdateCurrentVersionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code in [200, 406]:
-            pass
 
         return res
 

@@ -23,7 +23,7 @@ class UpdateVirtualNetworkRequestBodyDataAttributes:
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
     
 class UpdateVirtualNetworkRequestBodyDataTypeEnum(str, Enum):
-    VIRTUAL_NETWORK = "virtual_network"
+    VIRTUAL_NETWORK = 'virtual_network'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -21,17 +21,16 @@ class BandwidthPackages:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_plans_bandwidth(self, security: operations.GetPlansBandwidthSecurity) -> operations.GetPlansBandwidthResponse:
+    def get_plans_bandwidth(self) -> operations.GetPlansBandwidthResponse:
         r"""List all bandwidth packages available
         Lists all bandwidth packages offered to your current team.
-        
         """
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/plans/bandwidth'
         
         
-        client = utils.configure_security_client(self._client, security)
+        client = self._client
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
@@ -48,7 +47,6 @@ class BandwidthPackages:
     def update_plans_bandwidth(self, request: operations.UpdatePlansBandwidthRequestBody, security: operations.UpdatePlansBandwidthSecurity) -> operations.UpdatePlansBandwidthResponse:
         r"""Buy or remove bandwidth packages
         Allow to increase or decrease bandwidth packages. Only admins and owners can request.
-        
         """
         base_url = self._server_url
         

@@ -20,7 +20,7 @@ class IpmiSessionDataAttributes:
     r"""The IPMI username"""  
     
 class IpmiSessionDataTypeEnum(str, Enum):
-    IPMI_SESSIONS = "ipmi_sessions"
+    IPMI_SESSIONS = 'ipmi_sessions'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

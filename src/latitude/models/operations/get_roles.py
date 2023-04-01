@@ -9,12 +9,6 @@ from latitude import utils
 from typing import Optional
 
 
-@dataclasses.dataclass
-class GetRolesSecurity:
-    
-    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})  
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class GetRoles200ApplicationJSON:

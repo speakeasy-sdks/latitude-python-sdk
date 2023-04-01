@@ -27,7 +27,6 @@ class IPMICredentials:
         You will have to use a VPN client such as https://openvpn.net to connect. See `VPN Sessions` API to create a VPN connection.
         
         Related guide: https://docs.latitude.sh/docs/ipmi
-        
         """
         base_url = self._server_url
         

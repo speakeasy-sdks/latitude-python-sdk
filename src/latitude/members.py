@@ -44,14 +44,14 @@ class Members:
 
         return res
 
-    def get_team_members(self, security: operations.GetTeamMembersSecurity) -> operations.GetTeamMembersResponse:
+    def get_team_members(self) -> operations.GetTeamMembersResponse:
         r"""List all Team Members"""
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/team/members'
         
         
-        client = utils.configure_security_client(self._client, security)
+        client = self._client
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')

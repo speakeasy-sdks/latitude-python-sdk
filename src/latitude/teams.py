@@ -21,14 +21,14 @@ class Teams:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_team(self, security: operations.GetTeamSecurity) -> operations.GetTeamResponse:
+    def get_team(self) -> operations.GetTeamResponse:
         r"""Retrieve the Current Team"""
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/team'
         
         
-        client = utils.configure_security_client(self._client, security)
+        client = self._client
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')

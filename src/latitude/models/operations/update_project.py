@@ -17,9 +17,9 @@ class UpdateProjectSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})  
     
 class UpdateProjectRequestBodyDataAttributesEnvironmentEnum(str, Enum):
-    DEVELOPMENT = "Development"
-    STAGING = "Staging"
-    PRODUCTION = "Production"
+    DEVELOPMENT = 'Development'
+    STAGING = 'Staging'
+    PRODUCTION = 'Production'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -32,7 +32,7 @@ class UpdateProjectRequestBodyDataAttributes:
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})  
     
 class UpdateProjectRequestBodyDataTypeEnum(str, Enum):
-    PROJECTS = "projects"
+    PROJECTS = 'projects'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

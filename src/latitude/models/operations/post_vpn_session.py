@@ -5,8 +5,9 @@ import dataclasses
 import requests as requests_http
 from ..shared import vpn_session_with_password as shared_vpn_session_with_password
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from latitude import utils
-from typing import Any, Optional
+from typing import Optional
 
 
 @dataclasses.dataclass
@@ -14,12 +15,43 @@ class PostVpnSessionSecurity:
     
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})  
     
+class PostVpnSessionRequestBodyDataAttributesSiteEnum(str, Enum):
+    MH1 = 'MH1'
+    SP1 = 'SP1'
+    SP4 = 'SP4'
+    SYD = 'SYD'
+    CH1 = 'CH1'
+    DAL2 = 'DAL2'
+    LA2 = 'LA2'
+    MI1 = 'MI1'
+    NY2 = 'NY2'
+    SAN = 'SAN'
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class PostVpnSessionRequestBodyDataAttributes:
+    
+    server_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('server_id'), 'exclude': lambda f: f is None }})  
+    site: Optional[PostVpnSessionRequestBodyDataAttributesSiteEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('site'), 'exclude': lambda f: f is None }})  
+    
+class PostVpnSessionRequestBodyDataTypeEnum(str, Enum):
+    VPN_SESSIONS = 'vpn_sessions'
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class PostVpnSessionRequestBodyData:
+    
+    attributes: Optional[PostVpnSessionRequestBodyDataAttributes] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('attributes'), 'exclude': lambda f: f is None }})  
+    type: Optional[PostVpnSessionRequestBodyDataTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})  
+    
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PostVpnSessionRequestBody:
     
-    data: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})  
+    data: Optional[PostVpnSessionRequestBodyData] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})  
     
 
 @dataclasses.dataclass

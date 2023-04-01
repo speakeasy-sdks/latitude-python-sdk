@@ -16,7 +16,7 @@ class RoleDataAttributes:
     r"""Name of the Role"""  
     
 class RoleDataTypeEnum(str, Enum):
-    ROLES = "roles"
+    ROLES = 'roles'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

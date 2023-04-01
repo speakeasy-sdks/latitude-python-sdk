@@ -53,7 +53,7 @@ class TrafficQuotaDataAttributes:
     quota_per_project: Optional[list[TrafficQuotaDataAttributesQuotaPerProject]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quota_per_project'), 'exclude': lambda f: f is None }})  
     
 class TrafficQuotaDataTypeEnum(str, Enum):
-    TRAFFIC_QUOTA = "traffic_quota"
+    TRAFFIC_QUOTA = 'traffic_quota'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

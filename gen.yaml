@@ -2,15 +2,15 @@ configVersion: 1.0.0
 management:
   docChecksum: 7447ed6f61fec1bd689c34efc74642f4
   docVersion: v2
-  speakeasyVersion: 1.19.2
-  generationVersion: 2.16.5
+  speakeasyVersion: 1.19.3
+  generationVersion: 2.16.7
 generation:
   telemetryEnabled: false
   sdkClassName: latitude
   sdkFlattening: true
   singleTagPerOp: false
 python:
-  version: 2.11.2
+  version: 2.11.3
   author: speakeasy-sdks
   description: Python Client SDK for Latitude API
   packageName: latitude-python-sdk

@@ -46,18 +46,16 @@ class Regions:
 
         return res
 
-    def get_regions(self, security: operations.GetRegionsSecurity) -> operations.GetRegionsResponse:
+    def get_regions(self) -> operations.GetRegionsResponse:
         r"""List all Regions
         Lists all [available locations](https://latitude.sh/locations). For server availability by location, please see the [Plans API](/reference/get-plans).
-        
-        
         """
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/regions'
         
         
-        client = utils.configure_security_client(self._client, security)
+        client = self._client
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')

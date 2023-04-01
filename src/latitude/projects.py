@@ -100,7 +100,6 @@ class Projects:
     def get_projects(self, request: operations.GetProjectsRequest, security: operations.GetProjectsSecurity) -> operations.GetProjectsResponse:
         r"""List all Projects
         Returns a list of all projects for the current team
-        
         """
         base_url = self._server_url
         

@@ -17,10 +17,10 @@ class PatchUserProfileSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})  
     
 class PatchUserProfileRequestBodyDataAttributesRoleEnum(str, Enum):
-    ADMINISTRATOR = "administrator"
-    BILLING = "billing"
-    COLLABORATOR = "collaborator"
-    OWNER = "owner"
+    ADMINISTRATOR = 'administrator'
+    BILLING = 'billing'
+    COLLABORATOR = 'collaborator'
+    OWNER = 'owner'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -33,7 +33,7 @@ class PatchUserProfileRequestBodyDataAttributes:
     role: Optional[PatchUserProfileRequestBodyDataAttributesRoleEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('role'), 'exclude': lambda f: f is None }})  
     
 class PatchUserProfileRequestBodyDataTypeEnum(str, Enum):
-    USERS = "users"
+    USERS = 'users'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

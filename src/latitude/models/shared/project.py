@@ -19,21 +19,21 @@ class ProjectAttributesBilling:
     type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})  
     
 class ProjectAttributesBillingMethodEnum(str, Enum):
-    NORMAL = "Normal"
-    NINETY_FIVETH_PERCENTILE = "95th percentile"
-    NULL = "null"
+    NORMAL = 'Normal'
+    NINETY_FIVETH_PERCENTILE = '95th percentile'
+    NULL = 'null'
 
 class ProjectAttributesBillingTypeEnum(str, Enum):
-    YEARLY = "Yearly"
-    MONTHLY = "Monthly"
-    HOURLY = "Hourly"
-    NULL = "null"
+    YEARLY = 'Yearly'
+    MONTHLY = 'Monthly'
+    HOURLY = 'Hourly'
+    NULL = 'null'
 
 class ProjectAttributesEnvironmentEnum(str, Enum):
-    DEVELOPMENT = "Development"
-    STAGING = "Staging"
-    PRODUCTION = "Production"
-    NULL = "null"
+    DEVELOPMENT = 'Development'
+    STAGING = 'Staging'
+    PRODUCTION = 'Production'
+    NULL = 'null'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

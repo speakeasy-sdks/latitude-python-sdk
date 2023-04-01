@@ -76,7 +76,6 @@ class Servers:
     def get_server(self, request: operations.GetServerRequest, security: operations.GetServerSecurity) -> operations.GetServerResponse:
         r"""Retrieve a Server
         Returns a server that belongs to the team.
-        
         """
         base_url = self._server_url
         
@@ -101,7 +100,6 @@ class Servers:
     def get_servers(self, request: operations.GetServersRequest, security: operations.GetServersSecurity) -> operations.GetServersResponse:
         r"""List all Servers
         Returns a list of all servers belonging to the team.
-        
         """
         base_url = self._server_url
         

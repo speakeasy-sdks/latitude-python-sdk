@@ -46,17 +46,16 @@ class Roles:
 
         return res
 
-    def get_roles(self, security: operations.GetRolesSecurity) -> operations.GetRolesResponse:
+    def get_roles(self) -> operations.GetRolesResponse:
         r"""List all Roles
         Returns a list of all roles that can be assigned to users
-        
         """
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/roles'
         
         
-        client = utils.configure_security_client(self._client, security)
+        client = self._client
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')

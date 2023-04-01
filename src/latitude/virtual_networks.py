@@ -24,7 +24,6 @@ class VirtualNetworks:
     def create_virtual_network(self, request: operations.CreateVirtualNetworkRequestBody, security: operations.CreateVirtualNetworkSecurity) -> operations.CreateVirtualNetworkResponse:
         r"""Create a Virtual Network
         Creates a new Virtual Network.
-        
         """
         base_url = self._server_url
         
@@ -56,7 +55,6 @@ class VirtualNetworks:
     def destroy_virtual_network(self, request: operations.DestroyVirtualNetworkRequest, security: operations.DestroyVirtualNetworkSecurity) -> operations.DestroyVirtualNetworkResponse:
         r"""Delete a Virtual Network
         Delete virtual network
-        
         """
         base_url = self._server_url
         
@@ -84,7 +82,6 @@ class VirtualNetworks:
     def get_virtual_network(self, request: operations.GetVirtualNetworkRequest, security: operations.GetVirtualNetworkSecurity) -> operations.GetVirtualNetworkResponse:
         r"""Retrieve a Virtual Network
         Retrieve a Virtual Network.
-        
         """
         base_url = self._server_url
         
@@ -108,7 +105,6 @@ class VirtualNetworks:
     def get_virtual_networks(self, request: operations.GetVirtualNetworksRequest, security: operations.GetVirtualNetworksSecurity) -> operations.GetVirtualNetworksResponse:
         r"""List all Virtual Networks
         Lists virtual networks assigned to a project
-        
         """
         base_url = self._server_url
         
@@ -133,7 +129,6 @@ class VirtualNetworks:
     def update_virtual_network(self, request: operations.UpdateVirtualNetworkRequest, security: operations.UpdateVirtualNetworkSecurity) -> operations.UpdateVirtualNetworkResponse:
         r"""Update a Virtual Network
         Update a Virtual Network.
-        
         """
         base_url = self._server_url
         

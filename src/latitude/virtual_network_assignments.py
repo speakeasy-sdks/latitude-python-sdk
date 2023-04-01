@@ -53,7 +53,6 @@ class VirtualNetworkAssignments:
     def delete_virtual_networks_assignments(self, request: operations.DeleteVirtualNetworksAssignmentsRequest, security: operations.DeleteVirtualNetworksAssignmentsSecurity) -> operations.DeleteVirtualNetworksAssignmentsResponse:
         r"""Delete a Virtual Network Assignment
         Allow you to remove a Virtual Network assignment.
-        
         """
         base_url = self._server_url
         
@@ -79,7 +78,6 @@ class VirtualNetworkAssignments:
     def get_virtual_networks_assignments(self, request: operations.GetVirtualNetworksAssignmentsRequest, security: operations.GetVirtualNetworksAssignmentsSecurity) -> operations.GetVirtualNetworksAssignmentsResponse:
         r"""List all servers assigned to virtual networks
         Returns a list of all servers assigned to virtual networks.
-        
         """
         base_url = self._server_url
         

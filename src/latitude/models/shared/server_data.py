@@ -11,9 +11,9 @@ from latitude import utils
 from typing import Optional
 
 class ServerDataAttributesIpmiStatusEnum(str, Enum):
-    UNAVAILABLE = "Unavailable"
-    INTERMITTENT = "Intermittent"
-    NORMAL = "Normal"
+    UNAVAILABLE = 'Unavailable'
+    INTERMITTENT = 'Intermittent'
+    NORMAL = 'Normal'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -78,16 +78,15 @@ class ServerDataAttributesStatusEnum(str, Enum):
     `failed_disk_erasing` - The server has failed disk erasing in reinstall
     `deploying` - The server is in the last reinstalling stage and is `deploying`
     `failed_deployment` The server has failed deployment in reinstall
-    
     """
-    ON = "on"
-    OFF = "off"
-    UNKNOWN = "unknown"
-    READY = "ready"
-    DISK_ERASING = "disk_erasing"
-    FAILED_DISK_ERASING = "failed_disk_erasing"
-    DEPLOYING = "deploying"
-    FAILED_DEPLOYMENT = "failed_deployment"
+    ON = 'on'
+    OFF = 'off'
+    UNKNOWN = 'unknown'
+    READY = 'ready'
+    DISK_ERASING = 'disk_erasing'
+    FAILED_DISK_ERASING = 'failed_disk_erasing'
+    DEPLOYING = 'deploying'
+    FAILED_DEPLOYMENT = 'failed_deployment'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -114,7 +113,6 @@ class ServerDataAttributes:
     `failed_disk_erasing` - The server has failed disk erasing in reinstall
     `deploying` - The server is in the last reinstalling stage and is `deploying`
     `failed_deployment` The server has failed deployment in reinstall
-    
     """  
     team: Optional[shared_team_include.TeamInclude] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('team'), 'exclude': lambda f: f is None }})  
     

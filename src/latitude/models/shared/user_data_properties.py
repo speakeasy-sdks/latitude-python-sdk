@@ -32,7 +32,7 @@ class UserDataPropertiesRelationships:
     user: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user'), 'exclude': lambda f: f is None }})  
     
 class UserDataPropertiesTypeEnum(str, Enum):
-    USER_DATA = "user_data"
+    USER_DATA = 'user_data'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -70,8 +70,8 @@ class PlanDataAttributesSpecsCpus:
     type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})  
     
 class PlanDataAttributesSpecsDrivesTypeEnum(str, Enum):
-    SSD = "SSD"
-    HDD = "HDD"
+    SSD = 'SSD'
+    HDD = 'HDD'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -129,7 +129,7 @@ class PlanDataAttributes:
     specs: Optional[PlanDataAttributesSpecs] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('specs'), 'exclude': lambda f: f is None }})  
     
 class PlanDataTypeEnum(str, Enum):
-    PLANS = "plans"
+    PLANS = 'plans'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -50,7 +50,6 @@ class Plans:
         r"""List all Plans
         Lists all plans. Availability by region is included in the `data.attributes.available_in[*]`
         node for a given plan.
-        
         """
         base_url = self._server_url
         

@@ -26,7 +26,7 @@ class PatchCurrentTeamRequestBodyDataAttributes:
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})  
     
 class PatchCurrentTeamRequestBodyDataTypeEnum(str, Enum):
-    TEAMS = "teams"
+    TEAMS = 'teams'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

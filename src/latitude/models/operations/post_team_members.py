@@ -17,10 +17,10 @@ class PostTeamMembersSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})  
     
 class PostTeamMembersRequestBodyDataAttributesRoleEnum(str, Enum):
-    OWNER = "owner"
-    ADMINISTRATOR = "administrator"
-    COLLABORATOR = "collaborator"
-    BILLING = "billing"
+    OWNER = 'owner'
+    ADMINISTRATOR = 'administrator'
+    COLLABORATOR = 'collaborator'
+    BILLING = 'billing'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -33,7 +33,7 @@ class PostTeamMembersRequestBodyDataAttributes:
     last_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('last_name'), 'exclude': lambda f: f is None }})  
     
 class PostTeamMembersRequestBodyDataTypeEnum(str, Enum):
-    MEMBERSHIPS = "memberships"
+    MEMBERSHIPS = 'memberships'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

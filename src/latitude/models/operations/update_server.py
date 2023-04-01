@@ -23,7 +23,7 @@ class UpdateServerRequestBodyAttributes:
     hostname: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hostname'), 'exclude': lambda f: f is None }})  
     
 class UpdateServerRequestBodyTypeEnum(str, Enum):
-    SERVERS = "servers"
+    SERVERS = 'servers'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -16,13 +16,13 @@ class GetIpsSecurity:
     
 class GetIpsFilterFamilyEnum(str, Enum):
     r"""The protocol family to filter by"""
-    I_PV4 = "IPv4"
-    I_PV6 = "IPv6"
+    I_PV4 = 'IPv4'
+    I_PV6 = 'IPv6'
 
 class GetIpsFilterTypeEnum(str, Enum):
     r"""The protocol type to filter by"""
-    PRIVATE = "private"
-    PUBLIC = "public"
+    PRIVATE = 'private'
+    PUBLIC = 'public'
 
 
 @dataclasses.dataclass

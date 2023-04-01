@@ -21,17 +21,16 @@ class Account:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_user_profile(self, security: operations.GetUserProfileSecurity) -> operations.GetUserProfileResponse:
+    def get_user_profile(self) -> operations.GetUserProfileResponse:
         r"""Retrieve the User Profile
         Retrieve the current user profile
-        
         """
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/user/profile'
         
         
-        client = utils.configure_security_client(self._client, security)
+        client = self._client
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
@@ -45,17 +44,16 @@ class Account:
 
         return res
 
-    def get_user_teams(self, security: operations.GetUserTeamsSecurity) -> operations.GetUserTeamsResponse:
+    def get_user_teams(self) -> operations.GetUserTeamsResponse:
         r"""List all User Teams
         Returns a list of all teams the user belongs to
-        
         """
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/user/teams'
         
         
-        client = utils.configure_security_client(self._client, security)
+        client = self._client
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
@@ -72,7 +70,6 @@ class Account:
     def patch_user_profile(self, request: operations.PatchUserProfileRequest, security: operations.PatchUserProfileSecurity) -> operations.PatchUserProfileResponse:
         r"""Update the User Profile
         Update the current user profile
-        
         """
         base_url = self._server_url
         

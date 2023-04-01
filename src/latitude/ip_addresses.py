@@ -55,7 +55,6 @@ class IPAddresses:
          • Management IPs are IPs that are used for the management IP of a device.
            This is a public IP address that a device is born and dies with. It never changes during the lifecycle of the device.
          • Additional IPs are individual IPs that can be added to a device as an additional IP that can be used.
-        
         """
         base_url = self._server_url
         

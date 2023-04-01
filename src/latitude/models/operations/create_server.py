@@ -18,56 +18,56 @@ class CreateServerSecurity:
     
 class CreateServerRequestBodyDataAttributesOperatingSystemEnum(str, Enum):
     r"""The operating system for the new server"""
-    WINDOWS_SERVER_2019_STD_V1 = "windows_server_2019_std_v1"
-    WINDOWS_SERVER_2019_DC_V1 = "windows_server_2019_dc_v1"
-    WINDOWS_SERVER_2016_STD_V1 = "windows_server_2016_std_v1"
-    WINDOWS_SERVER_2016_DC_V1 = "windows_server_2016_dc_v1"
-    UBUNTU_22_04_X64_LTS = "ubuntu_22_04_x64_lts"
-    DEBIAN_11 = "debian_11"
-    ROCKYLINUX_8 = "rockylinux_8"
-    DEBIAN_10 = "debian_10"
-    FLATCAR_STABLE = "flatcar_stable"
-    RHEL8 = "rhel8"
-    CENTOS_7_4_X64 = "centos_7_4_x64"
-    CENTOS_8_X64 = "centos_8_x64"
-    UBUNTU_18_04_X64_LTS = "ubuntu_18_04_x64_lts"
-    UBUNTU_20_04_X64_LTS = "ubuntu_20_04_x64_lts"
+    WINDOWS_SERVER_2019_STD_V1 = 'windows_server_2019_std_v1'
+    WINDOWS_SERVER_2019_DC_V1 = 'windows_server_2019_dc_v1'
+    WINDOWS_SERVER_2016_STD_V1 = 'windows_server_2016_std_v1'
+    WINDOWS_SERVER_2016_DC_V1 = 'windows_server_2016_dc_v1'
+    UBUNTU_22_04_X64_LTS = 'ubuntu_22_04_x64_lts'
+    DEBIAN_11 = 'debian_11'
+    ROCKYLINUX_8 = 'rockylinux_8'
+    DEBIAN_10 = 'debian_10'
+    FLATCAR_STABLE = 'flatcar_stable'
+    RHEL8 = 'rhel8'
+    CENTOS_7_4_X64 = 'centos_7_4_x64'
+    CENTOS_8_X64 = 'centos_8_x64'
+    UBUNTU_18_04_X64_LTS = 'ubuntu_18_04_x64_lts'
+    UBUNTU_20_04_X64_LTS = 'ubuntu_20_04_x64_lts'
 
 class CreateServerRequestBodyDataAttributesPlanEnum(str, Enum):
     r"""The plan to choose server from"""
-    C1_LARGE_X86 = "c1-large-x86"
-    C1_MEDIUM_X86 = "c1-medium-x86"
-    C1_SMALL_X86 = "c1-small-x86"
-    C1_TINY_X86 = "c1-tiny-x86"
-    C2_LARGE_ARM = "c2-large-arm"
-    C2_LARGE_X86 = "c2-large-x86"
-    C2_MEDIUM_X86 = "c2-medium-x86"
-    C2_SMALL_X86 = "c2-small-x86"
-    T1_SPOT1 = "t1-spot1"
+    C1_LARGE_X86 = 'c1-large-x86'
+    C1_MEDIUM_X86 = 'c1-medium-x86'
+    C1_SMALL_X86 = 'c1-small-x86'
+    C1_TINY_X86 = 'c1-tiny-x86'
+    C2_LARGE_ARM = 'c2-large-arm'
+    C2_LARGE_X86 = 'c2-large-x86'
+    C2_MEDIUM_X86 = 'c2-medium-x86'
+    C2_SMALL_X86 = 'c2-small-x86'
+    T1_SPOT1 = 't1-spot1'
 
 class CreateServerRequestBodyDataAttributesRaidEnum(str, Enum):
     r"""RAID mode for the server"""
-    RAID_0 = "raid-0"
-    RAID_1 = "raid-1"
-    NULL = "null"
+    RAID_0 = 'raid-0'
+    RAID_1 = 'raid-1'
+    NULL = 'null'
 
 class CreateServerRequestBodyDataAttributesSiteEnum(str, Enum):
     r"""The site to deploy the server. Spot deployment does not need this parameter"""
-    CH1 = "CH1"
-    BGT = "BGT"
-    BUE = "BUE"
-    ASH = "ASH"
-    DAL2 = "DAL2"
-    LA2 = "LA2"
-    MH1 = "MH1"
-    MI1 = "MI1"
-    NY2 = "NY2"
-    SAN = "SAN"
-    SP1 = "SP1"
-    SP2 = "SP2"
-    SYD = "SYD"
-    TY6 = "TY6"
-    TY8 = "TY8"
+    CH1 = 'CH1'
+    BGT = 'BGT'
+    BUE = 'BUE'
+    ASH = 'ASH'
+    DAL2 = 'DAL2'
+    LA2 = 'LA2'
+    MH1 = 'MH1'
+    MI1 = 'MI1'
+    NY2 = 'NY2'
+    SAN = 'SAN'
+    SP1 = 'SP1'
+    SP2 = 'SP2'
+    SYD = 'SYD'
+    TY6 = 'TY6'
+    TY8 = 'TY8'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -92,7 +92,7 @@ class CreateServerRequestBodyDataAttributes:
     r"""User data to set on the server"""  
     
 class CreateServerRequestBodyDataTypeEnum(str, Enum):
-    SERVERS = "servers"
+    SERVERS = 'servers'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

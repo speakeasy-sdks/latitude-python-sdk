@@ -43,7 +43,7 @@ class PlansBandwidthAttributes:
     projects: Optional[list[PlansBandwidthAttributesProjects]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projects'), 'exclude': lambda f: f is None }})  
     
 class PlansBandwidthTypeEnum(str, Enum):
-    BANDWIDTH_PACKAGES = "bandwidth_packages"
+    BANDWIDTH_PACKAGES = 'bandwidth_packages'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

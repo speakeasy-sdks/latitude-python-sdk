@@ -42,7 +42,7 @@ class VirtualNetworkAttributes:
     r"""vlan ID of the virtual network"""  
     
 class VirtualNetworkTypeEnum(str, Enum):
-    VIRTUAL_NETWORKS = "virtual_networks"
+    VIRTUAL_NETWORKS = 'virtual_networks'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

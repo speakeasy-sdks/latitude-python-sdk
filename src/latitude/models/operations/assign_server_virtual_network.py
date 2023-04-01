@@ -25,7 +25,7 @@ class AssignServerVirtualNetworkRequestBodyDataAttributes:
     virtual_network_id: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('virtual_network_id') }})  
     
 class AssignServerVirtualNetworkRequestBodyDataTypeEnum(str, Enum):
-    VIRTUAL_NETWORK_ASSIGNMENT = "virtual_network_assignment"
+    VIRTUAL_NETWORK_ASSIGNMENT = 'virtual_network_assignment'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

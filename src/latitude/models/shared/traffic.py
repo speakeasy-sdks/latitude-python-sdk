@@ -59,7 +59,7 @@ class TrafficDataAttributes:
     r"""Value in GB"""  
     
 class TrafficDataTypeEnum(str, Enum):
-    TRAFFIC = "traffic"
+    TRAFFIC = 'traffic'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

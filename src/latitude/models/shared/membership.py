@@ -8,10 +8,10 @@ from latitude import utils
 from typing import Optional
 
 class MembershipDataAttributesRoleEnum(str, Enum):
-    OWNER = "owner"
-    ADMINISTRATOR = "administrator"
-    COLLABORATOR = "collaborator"
-    BILLING = "billing"
+    OWNER = 'owner'
+    ADMINISTRATOR = 'administrator'
+    COLLABORATOR = 'collaborator'
+    BILLING = 'billing'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

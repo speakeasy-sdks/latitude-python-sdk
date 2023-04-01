@@ -8,12 +8,6 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetTeamMembersSecurity:
-    
-    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})  
-    
-
-@dataclasses.dataclass
 class GetTeamMembersResponse:
     
     content_type: str = dataclasses.field()  

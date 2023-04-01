@@ -24,7 +24,6 @@ class VPNSessions:
     def delete_vpn_session(self, request: operations.DeleteVpnSessionRequest, security: operations.DeleteVpnSessionSecurity) -> operations.DeleteVpnSessionResponse:
         r"""Delete a VPN Session
         Deletes an existing VPN Session.
-        
         """
         base_url = self._server_url
         
@@ -75,7 +74,6 @@ class VPNSessions:
         r"""Create a VPN Session
         Creates a new VPN Session.
         `NOTE:` The VPN credentials are only listed ONCE upon creation. They can however be refreshed or deleted.
-        
         """
         base_url = self._server_url
         
@@ -105,7 +103,6 @@ class VPNSessions:
     def put_vpn_session(self, request: operations.PutVpnSessionRequest, security: operations.PutVpnSessionSecurity) -> operations.PutVpnSessionResponse:
         r"""Refresh a VPN Session
         Refreshing an existing VPN Session will create new credentials for that session
-        
         """
         base_url = self._server_url
         

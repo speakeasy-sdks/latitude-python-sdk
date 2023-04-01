@@ -17,11 +17,11 @@ class GetPlansSecurity:
     
 class GetPlansFilterStockLevelEnum(str, Enum):
     r"""The stock level at the site to filter by"""
-    UNAVAILABLE = "Unavailable"
-    LOW = "Low"
-    MEDIUM = "Medium"
-    HIGH = "High"
-    UNIQUE = "Unique"
+    UNAVAILABLE = 'Unavailable'
+    LOW = 'Low'
+    MEDIUM = 'Medium'
+    HIGH = 'High'
+    UNIQUE = 'Unique'
 
 
 @dataclasses.dataclass

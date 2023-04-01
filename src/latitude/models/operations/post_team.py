@@ -17,8 +17,8 @@ class PostTeamSecurity:
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})  
     
 class PostTeamRequestBodyDataAttributesCurrencyEnum(str, Enum):
-    USD = "USD"
-    BRL = "BRL"
+    USD = 'USD'
+    BRL = 'BRL'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -31,7 +31,7 @@ class PostTeamRequestBodyDataAttributes:
     description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})  
     
 class PostTeamRequestBodyDataTypeEnum(str, Enum):
-    TEAMS = "teams"
+    TEAMS = 'teams'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

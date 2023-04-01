@@ -29,7 +29,7 @@ class UpdatePlansBandwidthRequestBodyDataAttributes:
     r"""The region to add bandwidth"""  
     
 class UpdatePlansBandwidthRequestBodyDataTypeEnum(str, Enum):
-    BANDWIDTH_PACKAGES = "bandwidth_packages"
+    BANDWIDTH_PACKAGES = 'bandwidth_packages'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

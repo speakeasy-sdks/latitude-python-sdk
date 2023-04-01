@@ -26,7 +26,7 @@ class PostProjectSSHKeyRequestBodyDataAttributes:
     r"""SSH Public Key"""  
     
 class PostProjectSSHKeyRequestBodyDataTypeEnum(str, Enum):
-    SSH_KEYS = "ssh_keys"
+    SSH_KEYS = 'ssh_keys'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
