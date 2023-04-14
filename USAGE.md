@@ -7,7 +7,7 @@ s = latitude.Latitude()
 
 
 req = operations.GetRegionRequest(
-    id="corrupti",
+    id="89bd9d8d-69a6-474e-8f46-7cc8796ed151",
 )
     
 res = s.regions.get_region(req, operations.GetRegionSecurity(
