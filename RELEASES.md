@@ -255,3 +255,11 @@ Based on:
 - Speakeasy CLI 1.20.1 (2.18.1) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v2.13.1] https://pypi.org/project/latitude-python-sdk/2.13.1 - .
+
+## 2023-04-19 01:25:26
+### Changes
+Based on:
+- OpenAPI Doc v2 ./openapi.yaml
+- Speakeasy CLI 1.20.2 (2.18.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v2.13.2] https://pypi.org/project/latitude-python-sdk/2.13.2 - .
