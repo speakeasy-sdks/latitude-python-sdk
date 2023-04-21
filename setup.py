@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="latitude-python-sdk",
-    version="2.13.2",
+    version="2.14.0",
     author="speakeasy-sdks",
     description="Python Client SDK for Latitude API",
     long_description=long_description,
